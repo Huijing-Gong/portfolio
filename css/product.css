@@ -1,0 +1,275 @@
+/* ============================================
+   PRODUCT PAGE V2 — Three products
+   ============================================ */
+
+.product-page { background: #050508; overflow-x: hidden; }
+#bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+.prod-header-v2 {
+  position: relative; z-index: 1;
+  padding: 120px 36px 20px;
+  text-align: center;
+}
+.prod-title-v2 {
+  font-family: var(--font-sc);
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 600; letter-spacing: 0.04em;
+}
+.prod-desc-v2 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--text-dim);
+  letter-spacing: 0.06em; margin-top: 8px;
+}
+
+/* --- Product Item --- */
+.prod-item {
+  position: relative; z-index: 1;
+  padding: 50px 36px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.prod-item.alt {
+  background: rgba(255,255,255,0.01);
+}
+.prod-item-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* --- Visual Stage --- */
+.prod-visual { display: flex; justify-content: center; }
+.prod-visual-stage {
+  width: 100%; max-width: 440px;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+/* --- Info --- */
+.prod-info {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.prod-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; color: var(--accent);
+  letter-spacing: 0.12em;
+}
+.prod-name {
+  font-family: var(--font-sc);
+  font-size: 2rem; font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.prod-subtitle {
+  font-family: var(--font-sc);
+  font-size: 0.95rem; color: var(--text-muted);
+  font-weight: 300;
+}
+.prod-desc {
+  font-family: var(--font-sc);
+  font-size: 0.88rem; line-height: 1.7;
+  color: var(--text-muted); font-weight: 300;
+}
+.prod-tags {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;
+}
+.prod-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; padding: 5px 12px;
+  border-radius: 14px;
+  background: rgba(167,139,250,.06);
+  color: var(--accent); letter-spacing: 0.04em;
+  border: 1px solid rgba(167,139,250,.1);
+}
+.prod-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  color: var(--accent); margin-top: 8px;
+  display: inline-block; transition: color 0.3s;
+}
+.prod-cta:hover { color: #c4b5fd; }
+
+/* ============================================
+   BOARD GAME DISPLAY
+   ============================================ */
+.boardgame-display {
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse at 50% 60%, #1a2a1a, #0a120a);
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+  border-radius: 16px;
+}
+.bg-card {
+  position: absolute;
+  width: 80px; height: 110px;
+  border-radius: 8px;
+  background: linear-gradient(135deg,#2a3a2a,#1a2a1a);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+  animation: cardFloat 5s ease-in-out infinite;
+}
+.bg-card-1 { top: 18%; left: 15%; transform: rotate(-8deg); animation-delay: 0s; }
+.bg-card-2 { top: 35%; left: 38%; transform: rotate(4deg); z-index: 2; animation-delay: 1.5s; }
+.bg-card-3 { top: 22%; right: 18%; transform: rotate(-3deg); animation-delay: 3s; }
+.bg-card-face {
+  width: 100%; height: 100%;
+  border-radius: 6px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 10px;
+}
+.bg-card-label {
+  font-family: var(--font-sc);
+  font-size: 0.6rem; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.bg-card-art {
+  width: 50px; height: 60px;
+  border-radius: 4px;
+  background: radial-gradient(circle, rgba(167,139,250,0.2), transparent);
+  border: 1px solid rgba(167,139,250,0.1);
+}
+.bg-map {
+  position: absolute;
+  bottom: 15%; left: 25%; right: 25%;
+  height: 30%;
+  border-radius: 8px;
+  background: linear-gradient(135deg,rgba(30,50,30,0.8),rgba(20,40,20,0.6));
+  border: 1.5px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+}
+.bg-map-label {
+  font-family: var(--font-sc);
+  font-size: 0.65rem; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+}
+@keyframes cardFloat {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-8px) rotate(-6deg); }
+}
+.bg-card-2 { animation: cardFloat2 5s ease-in-out 1.5s infinite; }
+@keyframes cardFloat2 {
+  0%,100% { transform: translateY(0) rotate(4deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+/* ============================================
+   SIPPY DISPLAY
+   ============================================ */
+.sippy-stage {
+  background: radial-gradient(ellipse at 50% 50%, #1a1a30, #0a0a16);
+  border-radius: 16px;
+}
+.sippy-display {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+.sippy-body {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center;
+}
+.sippy-cup {
+  width: 60px; height: 50px;
+  background: linear-gradient(180deg, #d0d0e0, #a0a0b8);
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.sippy-base {
+  width: 80px; height: 24px;
+  background: linear-gradient(180deg, #b0b0c8, #8080a0);
+  border-radius: 8px;
+  margin-top: 2px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.sippy-wheel {
+  position: absolute; bottom: -6px;
+  width: 16px; height: 10px;
+  background: #606080; border-radius: 3px;
+}
+.sippy-wheel.wl { left: 10px; }
+.sippy-wheel.wr { right: 10px; }
+.sippy-eye {
+  position: absolute; top: 22px;
+  width: 14px; height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(167,139,250,0.5);
+  animation: eyeBlink 3s ease-in-out infinite;
+}
+.sippy-eye.left { left: 20px; }
+.sippy-eye.right { right: 20px; }
+@keyframes eyeBlink {
+  0%,95%,100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+.sippy-glow {
+  position: absolute; width: 100px; height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.12), transparent);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* ============================================
+   RESWAP DISPLAY
+   ============================================ */
+.reswap-stage {
+  background: radial-gradient(ellipse at 50% 50%, #1a1a28, #0a0a16);
+  border-radius: 16px;
+}
+.reswap-swap-station {
+  width: 180px; height: 200px;
+  background: linear-gradient(180deg,#2a2a3a,#1a1a2a);
+  border-radius: 12px; padding: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.reswap-screen {
+  width: 100%; height: 100%;
+  background: #0d0d1a; border-radius: 8px;
+  padding: 10px; display: flex;
+  flex-direction: column; gap: 8px;
+}
+.reswap-ui-top {
+  height: 12px; background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+}
+.reswap-ui-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 6px; flex: 1;
+}
+.reswap-ui-item {
+  background: rgba(255,255,255,0.03);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.reswap-chat-bubble {
+  background: linear-gradient(135deg,rgba(167,139,250,0.15),rgba(99,102,241,0.1));
+  border-radius: 8px 8px 8px 2px;
+  padding: 8px 10px;
+  font-family: var(--font-sc);
+  font-size: 0.55rem; color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  border: 1px solid rgba(167,139,250,0.1);
+  animation: bubbleFloat 4s ease-in-out infinite;
+}
+@keyframes bubbleFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+  .prod-item-layout {
+    grid-template-columns: 1fr; gap: 28px;
+  }
+  .prod-item.alt .prod-visual { order: -1; }
+  .prod-name { font-size: 1.5rem; }
+  .prod-visual-stage { max-width: 100%; }
+}

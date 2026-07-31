@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&lt; portfolio &gt; — Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* inline critical overrides */
+    :root {
+      --bg: #050508;
+      --font-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+  </style>
+</head>
+<body class="home-v2">
+
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Minimal nav -->
+  <nav class="nav-v2" id="nav">
+    <a href="#" class="nav-v2-brand">HG</a>
+    <div class="nav-v2-links">
+      <a href="apps.html" class="nav-v2-link">应用设计</a>
+      <a href="product.html" class="nav-v2-link">产品设计</a>
+      <a href="art.html" class="nav-v2-link">艺术设计</a>
+    </div>
+    <span class="nav-v2-time" id="navTime"></span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-v2">
+    <p class="hero-v2-tag">Product Designer · UX Designer</p>
+    <h1 class="hero-v2-name">Huijing<br>Gong</h1>
+    <p class="hero-v2-sub">墨尔本大学 人机交互硕士 · 用户体验设计学士</p>
+  </section>
+
+  <!-- Three Portals — no card backgrounds, just the objects -->
+  <section class="portals-v2">
+
+    <!-- PORTAL 1: Phone -->
+    <a href="apps.html" class="portal-v2 portal-v2-phone" id="portalPhone">
+      <div class="portal-v2-stage">
+        <!-- Silver futuristic phone floating -->
+        <div class="futur-phone" id="futurPhone">
+          <div class="futur-phone-body">
+            <div class="futur-phone-edge"></div>
+            <div class="futur-phone-screen">
+              <div class="futur-screen-boot">
+                <div class="futur-boot-icon"></div>
+                <div class="futur-boot-text">APP DESIGN</div>
+              </div>
+              <div class="futur-screen-grid">
+                <span class="futur-dot-app"></span>
+                <span class="futur-dot-app"></span>
+                <span class="futur-dot-app"></span>
+                <span class="futur-dot-app"></span>
+              </div>
+            </div>
+          </div>
+          <div class="futur-phone-glow"></div>
+        </div>
+        <div class="portal-v2-label">
+          <span class="portal-v2-title">应用设计</span>
+          <span class="portal-v2-subtitle">App Design</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- PORTAL 2: 3D Product -->
+    <a href="product.html" class="portal-v2 portal-v2-product" id="portalProduct">
+      <div class="portal-v2-stage">
+        <!-- SIPPY desktop robot -->
+        <div class="futur-product-stage">
+          <div class="sippy-robot">
+            <!-- Cup on top -->
+            <div class="sippy-top-cup">
+              <div class="sippy-cup-rim"></div>
+              <div class="sippy-cup-body"></div>
+              <div class="sippy-liquid"></div>
+            </div>
+            <!-- Sensor ring -->
+            <div class="sippy-sensor-ring"></div>
+            <!-- Robot body -->
+            <div class="sippy-body">
+              <div class="sippy-body-front">
+                <div class="sippy-display"></div>
+                <div class="sippy-sensor-dot"></div>
+              </div>
+            </div>
+            <!-- Wheels -->
+            <div class="sippy-wheels">
+              <div class="sippy-wheel sippy-wheel-l"></div>
+              <div class="sippy-wheel sippy-wheel-r"></div>
+            </div>
+            <!-- Shadow -->
+            <div class="sippy-shadow"></div>
+            <!-- Glow -->
+            <div class="prod-icon-glow"></div>
+          </div>
+        </div>
+        <div class="portal-v2-label">
+          <span class="portal-v2-title">产品设计</span>
+          <span class="portal-v2-subtitle">Product Design</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- PORTAL 3: Art / Frame / Palette -->
+    <a href="art.html" class="portal-v2 portal-v2-art" id="portalArt">
+      <div class="portal-v2-stage">
+        <!-- Minimal frame-like object — silver outline, inner canvas glows -->
+        <div class="futur-frame" id="futurFrame">
+          <div class="futur-frame-outer">
+            <div class="futur-frame-inner">
+              <div class="futur-frame-art"></div>
+              <div class="futur-frame-float">
+                <div class="futur-float-circle c1"></div>
+                <div class="futur-float-circle c2"></div>
+                <div class="futur-float-circle c3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="futur-frame-shimmer"></div>
+        </div>
+        <div class="portal-v2-label">
+          <span class="portal-v2-title">艺术设计</span>
+          <span class="portal-v2-subtitle">Art &amp; Illustration</span>
+        </div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- About -->
+  <section class="about-v2">
+    <p class="about-v2-text">设计 × 技术 × 艺术的交汇处。墨尔本大学信息技术硕士（人机交互）在读，UX 设计学士毕业。</p>
+    <div class="about-v2-links">
+      <a href="mailto:ghjxmm2004124@gmail.com">ghjxmm2004124@gmail.com</a>
+    </div>
+  </section>
+
+  <footer class="footer-v2">© 2026 Huijing Gong</footer>
+
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script type="importmap">
+  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/home-v2.js"></script>
+</body>
+</html>

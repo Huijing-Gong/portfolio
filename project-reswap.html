@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReSwap — 校园交换商店 + AI 客服 Sam | Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/project-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); cursor:zoom-out; }
+    .lightbox.active { display:flex; align-items:center; justify-content:center; }
+    .lightbox img { max-width:95vw; max-height:95vh; object-fit:contain; border-radius:8px; transition:transform 0.2s; }
+    .zoomable { cursor:zoom-in; }
+  </style>
+</head>
+<body class="proj-page">
+  <nav class="proj-nav"><a href="index.html" class="proj-nav-brand">HG</a><div><a href="product.html">← 返回产品设计</a></div></nav>
+
+  <header class="proj-hero">
+    <p class="proj-hero-tag">SERVICE DESIGN · AI CHATBOT</p>
+    <h1 class="proj-hero-title">ReSwap</h1>
+    <p class="proj-hero-sub">校园二手物品交换服务平台 + AI 客服 Sam</p>
+    <p class="proj-hero-desc">为墨尔本大学学生设计的校园二手物品交换服务。通过 Token 代币系统解决传统交换中价值不匹配的核心痛点，结合线下实体交换站与线上平台。AI 聊天机器人 Sam 提供智能推荐、站点查询、Token 规则解答和配送追踪——四轮用户测试驱动的对话设计，Voiceflow 平台实现，全链路无障碍支持。</p>
+    <div class="proj-hero-tags"><span class="proj-tag">服务设计</span><span class="proj-tag">AI Chatbot</span><span class="proj-tag">Voiceflow</span><span class="proj-tag">无障碍 WCAG 2.1</span><span class="proj-tag">用户测试</span></div>
+  </header>
+
+  <section class="proj-mockup">
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(6,182,212,.04),transparent 70%);min-height:320px;">
+      <div class="proj-screenshots">
+        <figure class="proj-screenshot"><img src="images/reswap/Frame 9.png" alt="Swap station" loading="lazy"><figcaption>交换站界面</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/reswap/Frame 10.png" alt="Swap station" loading="lazy"><figcaption>交换站界面</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/reswap/Frame 11.png" alt="Swap station" loading="lazy"><figcaption>交换站界面</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/reswap/Frame 12.png" alt="Swap station" loading="lazy"><figcaption>交换站界面</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/reswap/journey.png" alt="Journey map" loading="lazy"><figcaption>用户旅程图</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">AI Chatbot — Sam 对话设计</h2>
+    <div class="proj-section-body">
+      <p>ReSwap 的 AI 聊天机器人 Sam 是用户交互的核心入口，在 Voiceflow 平台上构建，覆盖四大对话场景。</p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Token 系统智能问答</h2>
+    <div class="proj-section-body">
+      <p>Sam 向用户解释 Token 作为虚拟货币的工作原理：用户将物品带到 Swap Station → 物品评估 → 获得 Token → 使用 Token 兑换其他物品或服务。无需等待以物易物匹配，直接通过 Token 完成价值交换。</p>
+    </div>
+    <div class="proj-mockup-inner" style="background:transparent;min-height:0;border:none;margin-top:16px;">
+      <img src="images/reswap/chatbot/token.png" alt="Token 对话流程" loading="lazy" style="width:100%;max-width:100%;display:block;border-radius:10px;">
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">物品交换引导</h2>
+    <div class="proj-section-body">
+      <p>Sam 逐步收集用户需求——询问物品类型、当前状况、用户偏好，引导用户选择用物品兑换 Token 或用 Token 交换物品，完成全流程对话引导。</p>
+    </div>
+    <div class="proj-mockup-inner" style="background:transparent;min-height:0;border:none;margin-top:16px;">
+      <img src="images/reswap/chatbot/swap item.png" alt="物品交换对话流程" loading="lazy" style="width:100%;max-width:100%;display:block;border-radius:10px;">
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Swap Station 信息查询</h2>
+    <div class="proj-section-body">
+      <p>校园设有三种交换站：Main Swap Station（主站）、Café Swap Station（咖啡厅站）、Mini Swap Station（迷你站）。Sam 提供各站位置、开放时间及无障碍设施信息。</p>
+    </div>
+    <div class="proj-mockup-inner" style="background:transparent;min-height:0;border:none;margin-top:16px;">
+      <img src="images/reswap/chatbot/swap station.png" alt="Swap Station 对话流程" loading="lazy" style="width:100%;max-width:100%;display:block;border-radius:10px;">
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">配送服务预约</h2>
+    <div class="proj-section-body">
+      <p>支持上门取件与配送两种模式。用户选择物品类型、提供地址、选择日期与时间段，Sam 确认物品重量与是否含易碎/危险品后完成预约，支持订单号查询状态。</p>
+    </div>
+    <div class="proj-mockup-inner" style="background:transparent;min-height:0;border:none;margin-top:16px;">
+      <img src="images/reswap/chatbot/deviliy.png" alt="配送服务对话流程" loading="lazy" style="width:100%;max-width:100%;display:block;border-radius:10px;">
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">设计亮点</h2>
+    <div class="proj-features">
+      <div class="proj-feature"><h4>🪙 Token 代币系统</h4><p>用户寄存闲置物品后获得 Token（按物品价值评估），可用于兑换站内其他物品或校园商店优惠券，解决了传统一对一交换中价值不匹配、匹配效率低的问题。</p></div>
+      <div class="proj-feature"><h4>🚚 志愿者配送服务</h4><p>针对轮椅使用者等行动不便群体，系统匹配校园志愿者完成物品取送。志愿者完成任务可获得 Token 奖励，形成互助激励闭环。</p></div>
+      <div class="proj-feature"><h4>♿ 无障碍全覆盖</h4><p>线下站点配备坡道、盲道、自动门；线上平台支持 WCAG 2.1 标准、高对比度模式、屏幕阅读器兼容、语音输入/输出。</p></div>
+      <div class="proj-feature"><h4>🤖 AI Chatbot 多模块架构</h4><p>智能物品推荐 + 交换站信息查询 + Token 规则解答（知识库集成）+ 配送订单追踪（Airtable API）+ Google Maps 一键导航。</p></div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">项目视频</h2>
+    <div class="proj-prototype-frame" style="height:500px;">
+      <iframe style="border:none;border-radius:16px;" width="100%" height="100%" src="https://www.youtube.com/embed/hgoGjwUO5_s" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="proj-back"><a href="product.html">← 返回产品设计</a></div>
+  <footer class="proj-footer">© 2026 Huijing Gong</footer>
+
+</body>
+</html>

@@ -1,0 +1,898 @@
+/* ============================================
+   HOMEPAGE V2 — Futuristic Dark Theme
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #050508;
+  --text: #e0e0e0;
+  --text-muted: #707078;
+  --text-dim: #3a3a42;
+  --accent: #a78bfa;
+  --accent2: #6366f1;
+  --silver: #c0c0c8;
+  --silver-dark: #686878;
+  --font: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* --- Canvas BG --- */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   NAV V2
+   ============================================ */
+
+.nav-v2 {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 36px;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+.nav-v2.scrolled {
+  background: rgba(5,5,8,0.6);
+  backdrop-filter: blur(20px);
+}
+
+.nav-v2-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--silver), #fff, var(--silver-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-v2-links { display: flex; gap: 24px; }
+
+.nav-v2-link {
+  font-family: var(--font-sc);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  letter-spacing: 0.03em;
+}
+
+.nav-v2-link:hover { color: var(--text); }
+
+.nav-v2-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+/* ============================================
+   HERO V2
+   ============================================ */
+
+.hero-v2 {
+  position: relative;
+  z-index: 1;
+  padding: 120px 36px 30px;
+  text-align: center;
+}
+
+.hero-v2-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fader 0.8s 0.1s var(--ease) forwards;
+  text-transform: uppercase;
+}
+
+.hero-v2-name {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fader 0.8s 0.2s var(--ease) forwards;
+  /* silver gradient text */
+  background: linear-gradient(180deg, #e8e8f0 0%, #9098a8 60%, #585868 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-v2-sub {
+  font-family: var(--font-sc);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  animation: fader 0.8s 0.35s var(--ease) forwards;
+}
+
+@keyframes fader {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   PORTALS V2 — objects only, no cards
+   ============================================ */
+
+.portals-v2 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 56px;
+  padding: 30px 36px 80px;
+  margin: 0 auto;
+  max-width: 1050px;
+  width: 100%;
+  transform: translateX(100px);
+}
+
+.portal-v2-phone,
+.portal-v2-product,
+.portal-v2-art {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.portal-v2-phone .portal-v2-label,
+.portal-v2-art .portal-v2-label {
+  padding-left: 30px;
+}
+
+.portal-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px 24px;
+  cursor: pointer;
+  transition: transform 0.5s var(--ease);
+}
+
+.portal-v2:hover {
+  transform: translateY(-4px);
+}
+
+.portal-v2-phone .portal-v2-stage,
+.portal-v2-product .portal-v2-stage,
+.portal-v2-art .portal-v2-stage {
+  height: 380px;
+}
+
+.portal-v2-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.portal-v2-label {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 8px 4px;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.portal-v2-title {
+  font-family: var(--font-sc);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+.portal-v2:hover .portal-v2-title {
+  color: #fff;
+}
+
+.portal-v2-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.portal-v2:hover .portal-v2-subtitle {
+  color: var(--accent);
+}
+
+/* ============================================
+   FUTURISTIC PHONE
+   ============================================ */
+
+.futur-phone {
+  position: relative;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.portal-v2-phone:hover .futur-phone {
+  transform: translateY(-8px);
+}
+
+.futur-phone-body {
+  width: 155px;
+  height: 300px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #d0d0d8 0%, #a8a8b4 15%, #c8c8d0 30%, #9098a8 50%, #b8b8c4 70%, #888898 85%, #b0b0bc 100%);
+  padding: 8px;
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.3),
+    0 0 0 2px rgba(0,0,0,0.3),
+    0 0 30px rgba(160,160,200,0.15),
+    0 20px 50px rgba(0,0,0,0.5);
+  transition: all 0.6s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.portal-v2-phone:hover .futur-phone-body {
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.4),
+    0 0 0 2px rgba(0,0,0,0.3),
+    0 0 40px rgba(167,139,250,0.25),
+    0 0 80px rgba(99,102,241,0.15),
+    0 25px 60px rgba(0,0,0,0.6);
+}
+
+.futur-phone-edge {
+  display: none;
+}
+
+.futur-phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #050510;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: background 0.6s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.portal-v2-phone:hover .futur-phone-screen {
+  background: #08082a;
+}
+
+.futur-screen-boot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.5s;
+}
+
+.futur-boot-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 16px rgba(167,139,250,0.4);
+  transition: all 0.5s;
+}
+
+.portal-v2-phone:hover .futur-boot-icon {
+  box-shadow: 0 0 30px rgba(167,139,250,0.7);
+  transform: scale(1.1);
+}
+
+.futur-boot-text {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  transition: color 0.5s;
+}
+
+.portal-v2-phone:hover .futur-boot-text {
+  color: var(--accent);
+}
+
+.futur-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.futur-dot-app {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.4s ease;
+}
+
+.portal-v2-phone:hover .futur-dot-app {
+  animation: appGlowV2 2s ease-in-out infinite;
+}
+
+.futur-dot-app:nth-child(1) { animation-delay: 0s; }
+.futur-dot-app:nth-child(2) { animation-delay: 0.2s; }
+.futur-dot-app:nth-child(3) { animation-delay: 0.4s; }
+.futur-dot-app:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes appGlowV2 {
+  0%,100% { background: rgba(255,255,255,0.04); box-shadow: none; }
+  50% { background: rgba(167,139,250,0.4); box-shadow: 0 0 10px rgba(167,139,250,0.4); }
+}
+
+.futur-phone-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(167,139,250,0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portal-v2-phone:hover .futur-phone-glow {
+  opacity: 1;
+}
+
+/* ============================================
+   FUTURISTIC PRODUCT (3D canvas portal)
+   ============================================ */
+
+.futur-product-stage {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product icon — SIPPY desktop robot */
+.sippy-robot {
+  position: relative;
+  width: 180px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transition: transform 0.6s var(--ease);
+}
+
+.portal-v2-product:hover .sippy-robot {
+  transform: translateY(-10px);
+}
+
+/* Cup on top of robot */
+.sippy-top-cup {
+  position: relative;
+  width: 56px;
+  height: 64px;
+  z-index: 3;
+  margin-bottom: -6px;
+  transition: transform 0.5s var(--ease-spring);
+}
+.portal-v2-product:hover .sippy-top-cup {
+  transform: translateY(-3px);
+}
+
+.sippy-cup-body {
+  width: 56px;
+  height: 64px;
+  background: linear-gradient(
+    90deg,
+    rgba(170,170,190,0.55) 0%,
+    rgba(225,225,240,0.75) 18%,
+    rgba(245,245,255,0.85) 35%,
+    rgba(210,210,225,0.65) 58%,
+    rgba(160,160,180,0.5) 80%,
+    rgba(135,135,160,0.4) 100%
+  );
+  border-radius: 14px 14px 18px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.2),
+    0 4px 20px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.sippy-cup-rim {
+  position: absolute;
+  top: -3px;
+  left: -2px;
+  right: -2px;
+  height: 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(220,220,235,0.7) 0%,
+    rgba(240,240,250,0.5) 100%
+  );
+  border-radius: 5px;
+  z-index: 4;
+}
+
+/* Liquid inside cup */
+.sippy-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  right: 3px;
+  height: 42%;
+  background: linear-gradient(
+    180deg,
+    rgba(129,140,248,0.3) 0%,
+    rgba(99,102,241,0.25) 40%,
+    rgba(167,139,250,0.15) 100%
+  );
+  border-radius: 0 0 16px 16px;
+  transition: height 0.8s ease;
+}
+.portal-v2-product:hover .sippy-liquid {
+  height: 60%;
+}
+
+/* Sensor ring between cup and body */
+.sippy-sensor-ring {
+  width: 74px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: radial-gradient(ellipse at center, rgba(167,139,250,0.06), transparent 70%);
+  z-index: 2;
+  margin-bottom: -4px;
+  transition: all 0.6s ease;
+}
+.portal-v2-product:hover .sippy-sensor-ring {
+  border-color: rgba(167,139,250,0.2);
+  box-shadow: 0 0 15px rgba(167,139,250,0.1);
+}
+
+/* Robot body */
+.sippy-body {
+  width: 72px;
+  height: 52px;
+  z-index: 2;
+  position: relative;
+}
+
+.sippy-body-front {
+  width: 72px;
+  height: 52px;
+  background: linear-gradient(
+    180deg,
+    rgba(210,210,225,0.5) 0%,
+    rgba(180,180,195,0.6) 20%,
+    rgba(160,160,175,0.5) 50%,
+    rgba(140,140,160,0.45) 80%,
+    rgba(120,120,140,0.4) 100%
+  );
+  border-radius: 18px 18px 14px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.15),
+    0 6px 18px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.6s ease;
+}
+
+.portal-v2-product:hover .sippy-body-front {
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.25),
+    0 0 20px rgba(167,139,250,0.12),
+    0 8px 22px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Small display screen on body */
+.sippy-display {
+  width: 16px;
+  height: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(99,102,241,0.3) 0%,
+    rgba(167,139,250,0.2) 50%,
+    rgba(99,102,241,0.25) 100%
+  );
+  border-radius: 3px;
+  transition: all 0.5s ease;
+}
+.portal-v2-product:hover .sippy-display {
+  background: linear-gradient(
+    135deg,
+    rgba(129,140,248,0.5) 0%,
+    rgba(167,139,250,0.35) 50%,
+    rgba(129,140,248,0.4) 100%
+  );
+  box-shadow: 0 0 8px rgba(167,139,250,0.2);
+}
+
+/* Small sensor dot */
+.sippy-sensor-dot {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(167,139,250,0.3);
+  transition: all 0.5s ease;
+}
+.portal-v2-product:hover .sippy-sensor-dot {
+  background: rgba(167,139,250,0.6);
+  box-shadow: 0 0 5px rgba(167,139,250,0.3);
+}
+
+/* Wheels */
+.sippy-wheels {
+  display: flex;
+  gap: 42px;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+.sippy-wheel {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(180,180,195,0.5) 0%,
+    rgba(140,140,160,0.55) 50%,
+    rgba(100,100,120,0.45) 100%
+  );
+  border: 2px solid rgba(255,255,255,0.08);
+  position: relative;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.6s ease;
+}
+
+.sippy-wheel::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: radial-gradient(circle, rgba(200,200,215,0.3), transparent 60%);
+}
+
+.portal-v2-product:hover .sippy-wheel-l {
+  transform: rotate(25deg);
+}
+.portal-v2-product:hover .sippy-wheel-r {
+  transform: rotate(-25deg);
+}
+
+/* Shadow beneath robot */
+.sippy-shadow {
+  position: absolute;
+  bottom: 20px;
+  width: 80px;
+  height: 8px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.3), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  transition: all 0.6s ease;
+}
+.portal-v2-product:hover .sippy-shadow {
+  width: 100px;
+  opacity: 0.5;
+}
+
+/* Orbit rings */
+.sippy-orbit {
+  display: none;
+}
+
+.sippy-cup {
+  display: none;
+}
+
+.sippy-base {
+  display: none;
+}
+
+.sippy-dot {
+  display: none;
+}
+
+.prod-icon-glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(167,139,250,0.05), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portal-v2-product:hover .prod-icon-glow {
+  opacity: 1;
+}
+
+.futur-drag-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.portal-v2-product:hover .futur-drag-hint {
+  opacity: 1;
+}
+
+/* ============================================
+   FUTURISTIC FRAME
+   ============================================ */
+
+.futur-frame {
+  position: relative;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.portal-v2-art:hover .futur-frame {
+  transform: translateY(-6px);
+}
+
+.futur-frame-outer {
+  width: 150px;
+  height: 200px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #d0d0d8 0%, #a8a8b4 20%, #c8c8d0 40%, #9098a8 60%, #b8b8c4 80%, #888898 100%);
+  padding: 4px;
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.25),
+    0 0 0 2px rgba(0,0,0,0.2),
+    0 0 20px rgba(160,160,200,0.1),
+    0 15px 40px rgba(0,0,0,0.4);
+  transition: all 0.6s ease;
+}
+
+.portal-v2-art:hover .futur-frame-outer {
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.35),
+    0 0 0 2px rgba(0,0,0,0.2),
+    0 0 35px rgba(167,139,250,0.18),
+    0 0 70px rgba(99,102,241,0.1),
+    0 20px 50px rgba(0,0,0,0.5);
+}
+
+.futur-frame-inner {
+  width: 100%;
+  height: 100%;
+  background: #080810;
+  border-radius: 1px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.futur-frame-art {
+  position: absolute;
+  inset: 10px;
+  background:
+    radial-gradient(ellipse at 30% 35%, rgba(167,139,250,0.25), transparent 45%),
+    radial-gradient(ellipse at 65% 60%, rgba(236,72,153,0.15), transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(6,182,212,0.1), transparent 35%);
+  transition: all 0.8s ease;
+}
+
+.portal-v2-art:hover .futur-frame-art {
+  filter: saturate(1.5) brightness(1.3);
+  transform: scale(1.08);
+}
+
+.futur-frame-float {
+  position: relative;
+  z-index: 2;
+}
+
+.futur-float-circle {
+  position: absolute;
+  border-radius: 50%;
+  transition: all 0.6s ease;
+}
+
+.futur-float-circle.c1 {
+  width: 30px; height: 30px;
+  background: radial-gradient(circle, rgba(167,139,250,0.5), transparent);
+  top: -30px; left: -20px;
+  animation: floatC 5s ease-in-out infinite;
+}
+
+.futur-float-circle.c2 {
+  width: 20px; height: 20px;
+  background: radial-gradient(circle, rgba(236,72,153,0.4), transparent);
+  top: 20px; right: -30px;
+  animation: floatC 4s ease-in-out 1s infinite;
+}
+
+.futur-float-circle.c3 {
+  width: 16px; height: 16px;
+  background: radial-gradient(circle, rgba(6,182,212,0.4), transparent);
+  bottom: -20px; left: 10px;
+  animation: floatC 6s ease-in-out 2s infinite;
+}
+
+@keyframes floatC {
+  0%,100% { transform: translate(0,0); }
+  33% { transform: translate(6px,-8px); }
+  66% { transform: translate(-4px,6px); }
+}
+
+.futur-frame-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+
+.portal-v2-art:hover .futur-frame-shimmer {
+  opacity: 1;
+  animation: shimmerV2 3s ease-in-out infinite;
+}
+
+@keyframes shimmerV2 {
+  0%,100% { transform: translateX(-15%); }
+  50% { transform: translateX(15%); }
+}
+
+/* ============================================
+   ABOUT & FOOTER
+   ============================================ */
+
+.about-v2 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 36px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.about-v2-text {
+  font-family: var(--font-sc);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.about-v2-links {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.about-v2-links a { transition: color 0.3s; }
+.about-v2-links a:hover { color: var(--accent); }
+
+.footer-v2 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px 36px 30px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+/* ============================================
+   PAGE TRANSITION
+   ============================================ */
+
+.page-transition {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--bg);
+  clip-path: circle(0% at var(--tx,50%) var(--ty,50%));
+  pointer-events: none;
+  transition: clip-path 0.8s cubic-bezier(0.76,0,0.24,1);
+}
+.page-transition.active { clip-path: circle(150% at var(--tx,50%) var(--ty,50%)); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 800px) {
+  .portals-v2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 16px 50px;
+  }
+
+  .portal-v2-phone,
+  .portal-v2-product,
+  .portal-v2-art {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .portal-v2-phone .portal-v2-stage,
+  .portal-v2-product .portal-v2-stage,
+  .portal-v2-art .portal-v2-stage {
+    height: 320px;
+  }
+
+  .nav-v2 { padding: 14px 20px; }
+  .nav-v2-links { gap: 16px; }
+  .nav-v2-link { font-size: 0.68rem; }
+
+  .hero-v2 { padding: 100px 20px 24px; }
+  .hero-v2-name { font-size: 2.6rem; }
+}

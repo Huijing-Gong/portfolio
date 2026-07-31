@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品设计 — Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="product-page">
+
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="nav-v2 scrolled">
+    <a href="index.html" class="nav-v2-brand">HG</a>
+    <div class="nav-v2-links">
+      <a href="index.html" class="nav-v2-link">← 返回</a>
+      <a href="apps.html" class="nav-v2-link">应用设计</a>
+      <a href="art.html" class="nav-v2-link">艺术设计</a>
+    </div>
+  </nav>
+
+  <header class="prod-header-v2">
+    <h1 class="prod-title-v2">产品设计</h1>
+    <p class="prod-desc-v2">Product Design — 从实体桌游到智能硬件到服务系统</p>
+  </header>
+
+  <!-- Product 1: SEVEN DAYS 桌游 -->
+  <section class="prod-item" id="prod-sevendays">
+    <div class="prod-item-layout">
+      <div class="prod-visual">
+        <div class="prod-visual-stage" id="sevendaysStage">
+          <!-- Board game 3D view: cards laid out -->
+          <div class="boardgame-display">
+            <div class="bg-card bg-card-1">
+              <div class="bg-card-face">
+                <span class="bg-card-label">角色卡</span>
+                <div class="bg-card-art"></div>
+              </div>
+            </div>
+            <div class="bg-card bg-card-2">
+              <div class="bg-card-face">
+                <span class="bg-card-label">技能卡</span>
+                <div class="bg-card-art"></div>
+              </div>
+            </div>
+            <div class="bg-card bg-card-3">
+              <div class="bg-card-face">
+                <span class="bg-card-label">资源卡</span>
+                <div class="bg-card-art"></div>
+              </div>
+            </div>
+            <div class="bg-map">
+              <div class="bg-map-surface"></div>
+              <span class="bg-map-label">地图</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-info">
+        <span class="prod-num">01</span>
+        <h2 class="prod-name">SEVEN DAYS</h2>
+        <p class="prod-subtitle">《第七天》— 末日生存半合作策略桌游</p>
+        <p class="prod-desc">一款面向 13 岁以上玩家的末日生存题材半合作策略桌游。玩家扮演辐射污染区中的幸存者，在七天内共同应对随机灾难事件，分配水、食物、燃料和医疗包等资源，并在合作中识别隐藏的"感染者"。融合资源管理、手牌策略与社交推理，多结局系统带来极高重玩性。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">桌游设计</span>
+          <span class="prod-tag">半合作机制</span>
+          <span class="prod-tag">社交推理</span>
+          <span class="prod-tag">多结局系统</span>
+        </div>
+        <a href="project-sevendays.html" class="prod-cta">查看项目详情 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 2: SIPPY -->
+  <section class="prod-item alt" id="prod-sippy">
+    <div class="prod-item-layout">
+      <div class="prod-info">
+        <span class="prod-num">02</span>
+        <h2 class="prod-name">SIPPY</h2>
+        <p class="prod-subtitle">智能桌面杯托机器人</p>
+        <p class="prod-desc">一款鼓励健康工作习惯的交互式智能杯托，通过"有意设计的干扰"引导用户在长时间专注中适时休息和补水。采用实体机器人形态，整合重量感应、手势识别和自主移动能力——用户评测中 65% 的参与者认为物理移动比屏幕提醒更有效，90% 给出 4-5 分的高辨识度评价。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">硬件原型</span>
+          <span class="prod-tag">ESP32</span>
+          <span class="prod-tag">手势识别</span>
+          <span class="prod-tag">交互设计</span>
+        </div>
+        <a href="project-sippy.html" class="prod-cta">查看项目详情 →</a>
+      </div>
+      <div class="prod-visual">
+        <div class="prod-visual-stage sippy-stage" id="sippyStage">
+          <!-- Sippy robot visualization -->
+          <div class="sippy-display">
+            <div class="sippy-body">
+              <div class="sippy-cup"></div>
+              <div class="sippy-base">
+                <div class="sippy-wheel wl"></div>
+                <div class="sippy-wheel wr"></div>
+              </div>
+              <div class="sippy-eye left"></div>
+              <div class="sippy-eye right"></div>
+            </div>
+            <div class="sippy-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 3: ReSwap -->
+  <section class="prod-item" id="prod-reswap">
+    <div class="prod-item-layout">
+      <div class="prod-visual">
+        <div class="prod-visual-stage reswap-stage" id="reswapStage">
+          <!-- Swap station UI mockup -->
+          <div class="reswap-display">
+            <div class="reswap-swap-station">
+              <div class="reswap-screen">
+                <div class="reswap-ui-top"></div>
+                <div class="reswap-ui-grid">
+                  <div class="reswap-ui-item"></div>
+                  <div class="reswap-ui-item"></div>
+                  <div class="reswap-ui-item"></div>
+                </div>
+                <div class="reswap-chat-bubble">
+                  <span>Hi! 我是 Sam 👋<br>需要帮你找什么？</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-info">
+        <span class="prod-num">03</span>
+        <h2 class="prod-name">ReSwap</h2>
+        <p class="prod-subtitle">校园交换商店 + AI 客服 Sam</p>
+        <p class="prod-desc">为墨尔本大学学生设计的二手物品交换服务平台。通过 Token 代币系统解决传统交换中价值不匹配的痛点，结合线下实体交换站与线上平台。AI 聊天机器人 Sam 提供智能物品推荐、站点查询和配送追踪——四轮用户测试驱动的对话设计，Voiceflow 平台实现，全链路无障碍支持。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">服务设计</span>
+          <span class="prod-tag">AI Chatbot</span>
+          <span class="prod-tag">无障碍设计</span>
+          <span class="prod-tag">Voiceflow</span>
+        </div>
+        <a href="project-reswap.html" class="prod-cta">查看项目详情 →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-v2">© 2026 Huijing Gong</footer>
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script type="importmap">
+  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/subpage-bg.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

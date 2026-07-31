@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>艺术设计 — Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/art.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    .palette-2d-section { padding:30px 20px 50px; display:flex; justify-content:center; }
+    .palette-2d { position:relative; width:100%; max-width:560px; aspect-ratio:1.55; cursor:none; }
+    .palette-svg { position:absolute; inset:0; width:100%; height:100%; filter:drop-shadow(0 8px 30px rgba(0,0,0,0.4)); pointer-events:none; }
+    /* Paint blobs */
+    .paint-blob { position:absolute; display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; cursor:none; z-index:2; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1); padding:0; }
+    .paint-blob:hover { transform:scale(1.15) translateY(-2px); }
+    .blob-color { width:44px; height:34px; border-radius:50% 50% 50% 50% / 55% 55% 45% 45%; display:block; position:relative; box-shadow:inset 0 -5px 8px rgba(0,0,0,0.25),inset 0 3px 5px rgba(255,255,255,0.25),0 4px 12px rgba(0,0,0,0.35); }
+    .blob-color::after { content:''; position:absolute; top:6px; left:30%; width:8px; height:6px; border-radius:50%; background:rgba(255,255,255,0.3); }
+    .paint-blob:hover .blob-color { box-shadow:inset 0 -5px 8px rgba(0,0,0,0.25),inset 0 3px 5px rgba(255,255,255,0.25),0 0 28px rgba(167,139,250,0.5),0 6px 18px rgba(0,0,0,0.5); }
+    .blob-label { font-family:var(--font-sc); font-size:0.7rem; font-weight:600; color:#e8e0d0; text-align:center; line-height:1.2; max-width:80px; transition:color 0.3s; letter-spacing:0.02em; text-shadow:0 1px 3px rgba(0,0,0,0.5); }
+    .paint-blob:hover .blob-label { color:#fff; }
+    .paint-blob.active .blob-color { box-shadow:inset 0 -5px 8px rgba(0,0,0,0.25),inset 0 3px 5px rgba(255,255,255,0.25),0 0 32px rgba(167,139,250,0.65),0 6px 20px rgba(0,0,0,0.55); }
+    .paint-blob.active .blob-label { color:var(--accent); }
+    .blob-1 { top:32%; left:64%; }
+    .blob-2 { top:18%; left:44%; }
+    .blob-3 { top:32%; left:26%; }
+    .blob-4 { top:52%; left:42%; }
+    /* Brush — follows cursor, bottom-right resting */
+    .palette-brush { position:fixed; pointer-events:none; z-index:100; transform:translate(-6px,-105px) rotate(20deg); transition:transform 0.06s linear; }
+    .palette-brush.dipping { transform:translate(-6px,-105px) rotate(20deg) scale(1.12); }
+    .palette-brush.pressing .brush-bristles { transform:scaleY(0.5) translateY(20px); }
+    .brush-bristles { transition:transform 0.15s ease-out; transform-origin:top center; }
+    .palette-brush svg { filter:drop-shadow(0 4px 8px rgba(0,0,0,0.45)); }
+    /* Paint splat marks */
+    .paint-splat { position:absolute; width:28px; height:22px; border-radius:50%; pointer-events:none; z-index:1; animation:splatIn 0.4s ease-out; }
+    @keyframes splatIn { from { transform:scale(0); opacity:0; } to { transform:scale(1); opacity:1; } }
+  </style>
+</head>
+<body class="art-page">
+
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="nav-v2 scrolled">
+    <a href="index.html" class="nav-v2-brand">HG</a>
+    <div class="nav-v2-links">
+      <a href="index.html" class="nav-v2-link">← 返回</a>
+      <a href="apps.html" class="nav-v2-link">应用设计</a>
+      <a href="product.html" class="nav-v2-link">产品设计</a>
+    </div>
+  </nav>
+
+  <header class="art-header-v2">
+    <h1 class="art-title-v2">艺术设计</h1>
+    <p class="art-desc-v2">Art &amp; Illustration — 点击调色盘上的颜料探索不同作品</p>
+  </header>
+
+  <!-- 2D Palette -->
+  <section class="palette-2d-section">
+    <div class="palette-2d">
+      <!-- Palette board -->
+      <svg class="palette-svg" viewBox="0 0 340 220" fill="none">
+        <defs>
+          <radialGradient id="woodGrad" cx="45%" cy="40%">
+            <stop offset="0%" stop-color="#e8cba0"/>
+            <stop offset="60%" stop-color="#d4a878"/>
+            <stop offset="100%" stop-color="#b88458"/>
+          </radialGradient>
+          <filter id="woodTex">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+            <feComposite in="SourceGraphic" in2="noise" operator="in" result="comp"/>
+            <feBlend in="SourceGraphic" in2="comp" mode="multiply" result="blend"/>
+          </filter>
+        </defs>
+        <!-- Board shadow -->
+        <ellipse cx="170" cy="114" rx="155" ry="96" fill="rgba(0,0,0,0.2)"/>
+        <!-- Board body -->
+        <ellipse cx="168" cy="108" rx="152" ry="93" fill="url(#woodGrad)" stroke="#9a6e44" stroke-width="1.5"/>
+        <!-- Inner board highlight ring -->
+        <ellipse cx="168" cy="106" rx="144" ry="87" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <!-- Thumb hole -->
+        <ellipse cx="62" cy="94" rx="20" ry="20" fill="#050508"/>
+        <ellipse cx="62" cy="94" rx="20" ry="20" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+        <!-- Subtle wood grain lines -->
+        <path d="M40 60 Q168 30 290 70" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+        <path d="M30 100 Q168 80 300 110" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+        <path d="M50 140 Q168 130 280 150" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+      </svg>
+      <!-- Paint blobs -->
+      <button class="paint-blob blob-1" data-key="spatial">
+        <span class="blob-color" style="background:#6366f1;"></span>
+        <span class="blob-label">空间世界设计</span>
+      </button>
+      <button class="paint-blob blob-2" data-key="game">
+        <span class="blob-color" style="background:#dc2626;"></span>
+        <span class="blob-label">游戏网站设计</span>
+      </button>
+      <button class="paint-blob blob-3" data-key="graphic">
+        <span class="blob-color" style="background:#d97706;"></span>
+        <span class="blob-label">平面设计</span>
+      </button>
+      <button class="paint-blob blob-4" data-key="render">
+        <span class="blob-color" style="background:#0d9488;"></span>
+        <span class="blob-label">Zirma 3D渲染</span>
+      </button>
+    </div>
+    <!-- Floating brush — follows cursor -->
+    <div class="palette-brush" id="paletteBrush">
+      <svg viewBox="0 0 24 160" width="22" height="120">
+        <!-- Bamboo handle — longer -->
+        <rect x="9" y="2" width="6" height="85" rx="3" fill="#7a6a3a"/>
+        <rect x="9" y="2" width="2" height="85" rx="1" fill="rgba(255,255,255,0.12)"/>
+        <rect x="14" y="2" width="1" height="85" fill="rgba(0,0,0,0.1)"/>
+        <!-- Bamboo nodes -->
+        <rect x="8" y="20" width="8" height="1.5" rx="0.5" fill="#6a5a2e"/>
+        <rect x="8" y="42" width="8" height="1.5" rx="0.5" fill="#6a5a2e"/>
+        <rect x="8" y="64" width="8" height="1.5" rx="0.5" fill="#6a5a2e"/>
+        <!-- String binding -->
+        <rect x="7" y="85" width="10" height="2" rx="1" fill="#4a3a1e"/>
+        <rect x="7" y="87" width="10" height="1" rx="0.5" fill="#5a4a2e"/>
+        <!-- Ferrule -->
+        <rect x="5" y="89" width="14" height="6" rx="2" fill="#c0b8a0"/>
+        <rect x="5" y="89" width="5" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+        <!-- Bristles — short teardrop -->
+        <g class="brush-bristles">
+          <path d="M5,95 Q5,95 4,108 Q3.5,120 7,138 Q10,144 12,144 Q14,144 17,138 Q20.5,120 20,108 Q19,95 19,95 Z" fill="#6366f1" id="brushTip"/>
+          <path d="M7,97 Q7,97 6,110 Q5.5,118 8,134 Q10,139 11,139 Q10,134 9,118 Q8.5,105 9,97 Z" fill="rgba(255,255,255,0.15)"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <footer class="footer-v2">© 2026 Huijing Gong</footer>
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script>
+  var projectData = {
+    spatial: { name:'空间世界设计',type:'Spatial World Design',summary:'以空间为主题的视觉设计，通过手绘草稿、色彩元素填充和数字渲染，构建具有深度感与沉浸感的视觉世界。',tags:['空间设计','手绘','数字渲染'],href:'project-art-spatial.html',color:'#6366f1' },
+    game: { name:'Dual Guardians',type:'游戏网站设计',summary:'原创游戏概念官方网站，融合北非部落美学与奇幻世界观。包含角色展示、世界观介绍和互动元素。',tags:['网页设计','游戏美术','Wix'],href:'project-art-game.html',color:'#dc2626' },
+    graphic: { name:'平面设计合集',type:'Graphic Design',summary:'涵盖字体设计、实体书装帧、黑胶专辑封面设计等多媒介平面作品，探索形式、材质与信息传达的实验。',tags:['字体设计','书籍装帧','专辑设计'],href:'project-art-graphic.html',color:'#d97706' },
+    render: { name:'Zirma — 3D建模渲染',type:'3D Modeling & Rendering',summary:'根据卡尔维诺《看不见的城市》中Zirma城市的文学描述，将空间意象转译为三维视觉作品。',tags:['3D建模','渲染','空间转译'],href:'project-art-render.html',color:'#0d9488' }
+  };
+
+  var brush = document.getElementById('paletteBrush');
+  var brushTip = document.getElementById('brushTip');
+  var palette2d = document.querySelector('.palette-2d');
+  var selectedColor = null;
+
+  // Brush follows cursor over palette
+  document.addEventListener('mousemove', function(e) {
+    brush.style.left = e.clientX + 'px';
+    brush.style.top = e.clientY + 'px';
+  });
+
+  // Color the brush tip when hovering over a blob
+  document.querySelectorAll('.paint-blob').forEach(function(btn) {
+    var color = projectData[btn.dataset.key].color;
+    btn.addEventListener('mouseenter', function() {
+      brushTip.setAttribute('fill', color);
+      brush.classList.add('dipping');
+    });
+    btn.addEventListener('mouseleave', function() {
+      if (!selectedColor || selectedColor.dataset.key !== btn.dataset.key) {
+        brushTip.setAttribute('fill', '#6366f1');
+        brush.classList.remove('dipping');
+      }
+    });
+    // Click blob → select color
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var key = this.dataset.key;
+      var data = projectData[key];
+      if (!data) return;
+
+      // Select color for brush
+      if (selectedColor && selectedColor !== this) {
+        selectedColor.classList.remove('active');
+      }
+      if (selectedColor === this) {
+        // Second click → navigate to project
+        var ov = document.getElementById('pageTransition');
+        if (ov) { ov.style.setProperty('--tx', e.clientX+'px'); ov.style.setProperty('--ty', e.clientY+'px'); ov.classList.add('active'); }
+        setTimeout(function(){ location.href = data.href; }, 800);
+        return;
+      }
+      selectedColor = this;
+      this.classList.add('active');
+      brushTip.setAttribute('fill', data.color);
+      brush.classList.add('dipping');
+    });
+  });
+
+  // Click on palette → press brush + leave paint splat
+  palette2d.addEventListener('click', function(e) {
+    if (!selectedColor) return;
+    // Press animation
+    brush.classList.add('pressing');
+    setTimeout(function(){ brush.classList.remove('pressing'); }, 200);
+    // Paint splat
+    var rect = palette2d.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+    var splat = document.createElement('div');
+    splat.className = 'paint-splat';
+    splat.style.left = x + '%';
+    splat.style.top = y + '%';
+    splat.style.background = projectData[selectedColor.dataset.key].color;
+    splat.style.boxShadow = 'inset 0 -3px 5px rgba(0,0,0,0.2), inset 0 2px 3px rgba(255,255,255,0.2)';
+    palette2d.appendChild(splat);
+    setTimeout(function(){ splat.style.opacity='0.5'; }, 3000);
+  });
+
+  // Page transitions
+  document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+    if (link.id === 'artProjectCta') return;
+    link.addEventListener('click', function(e) {
+      if (link.getAttribute('href') === location.pathname.split('/').pop()) return;
+      e.preventDefault();
+      var ov = document.getElementById('pageTransition');
+      if (ov) { ov.style.setProperty('--tx', e.clientX+'px'); ov.style.setProperty('--ty', e.clientY+'px'); ov.classList.add('active'); }
+      setTimeout(function(){ location.href = link.getAttribute('href'); }, 800);
+    });
+  });
+  </script>
+</body>
+</html>

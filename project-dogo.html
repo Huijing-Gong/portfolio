@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dogo — 一站式养狗服务平台 | Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/project-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="proj-page">
+
+  <nav class="proj-nav">
+    <a href="index.html" class="proj-nav-brand">HG</a>
+    <div>
+      <a href="apps.html">← 返回应用设计</a>
+    </div>
+  </nav>
+
+  <header class="proj-hero">
+    <p class="proj-hero-tag">APP DESIGN · INFO30008</p>
+    <h1 class="proj-hero-title">Dogo</h1>
+    <p class="proj-hero-sub">鼓励主人多遛狗 — 通过收集虚拟骨头兑换奖励，让每次出行都充满动力</p>
+    <p class="proj-hero-desc">一款面向养狗人士的综合移动应用，作为狗友友好地点的全方位指南，弥合宠物主人与周边环境之间的信息鸿沟。随着城市化加速，适合狗狗活动的绿色空间和宠物友好场所日益分散，Dogo 帮助主人快速找到可携狗前往的地点。核心激励机制通过出行收集虚拟骨头来兑换实物奖励，同时连接本地商家活动与宠物社群。</p>
+    <div class="proj-hero-tags">
+      <span class="proj-tag">用户研究</span><span class="proj-tag">Figma 原型</span><span class="proj-tag">AI Chatbot</span><span class="proj-tag">骨头收集</span><span class="proj-tag">奖励兑换</span>
+    </div>
+  </header>
+
+  <!-- Mockup / Screenshots -->
+  <section class="proj-mockup">
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(249,115,22,.04),transparent 70%);">
+      <div class="proj-screenshots" id="dogoScreenshots">
+        <div class="proj-screenshot"><img src="images/dogo/homepage (map) - roselyn.png" alt="首页地图视图" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/homepage (Bonesmap) - roselyn.png" alt="首页骨头地图" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/homepage (map) - cafes - roselyn.png" alt="咖啡馆筛选" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/homepage (map) - venue detail- roselyn.png" alt="地点详情" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Recommended Locations.png" alt="推荐地点" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Filter.png" alt="筛选功能" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Dogo  AI.png" alt="AI兽医诊断" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Dogo  AI-1.png" alt="AI诊断对话" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Rewards main page.png" alt="奖励主页" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Rewards detail page.png" alt="奖励详情" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/Event detail - Li.png" alt="活动详情" loading="lazy"></div>
+        <div class="proj-screenshot"><img src="images/dogo/profile 1 - yyr.png" alt="个人主页" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Process -->
+  <section class="proj-section">
+    <h2 class="proj-section-title">设计过程</h2>
+    <div class="proj-timeline">
+      <div class="proj-timeline-item">
+        <div class="proj-timeline-phase">Phase 1</div>
+        <div class="proj-timeline-body">
+          <h4>多方利益相关者访谈</h4>
+          <p>对狗主人（新手、忙碌学生、经验养狗者）、兽医和训犬师进行了五轮深度访谈，从不同视角全面了解养狗过程中的需求与痛点。绘制包含九个利益相关者的 Rich Picture，系统性分析各方需求关系。</p>
+        </div>
+      </div>
+      <div class="proj-timeline-item">
+        <div class="proj-timeline-phase">Phase 2</div>
+        <div class="proj-timeline-body">
+          <h4>概念设计与原型制作</h4>
+          <p>基于访谈洞察，为三大功能模块分别设计交互概念和用户流程。使用 Figma 制作高保真交互原型，每个模块包含完整的主要用户路径和边缘场景。</p>
+        </div>
+      </div>
+      <div class="proj-timeline-item">
+        <div class="proj-timeline-phase">Phase 3</div>
+        <div class="proj-timeline-body">
+          <h4>用户测试与迭代</h4>
+          <p>对初始原型进行了五轮用户测试访谈，收集反馈用于迭代改进。重点关注功能可发现性、交互流畅度和视觉清晰度，每轮测试后针对性优化设计。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-section">
+    <h2 class="proj-section-title">三大核心功能</h2>
+    <div class="proj-features">
+      <div class="proj-feature">
+        <h4>🔍 宠物友好地点搜索</h4>
+        <p>通过传统筛选和 AI 对话两种方式，快速查找狗友友好地点。交互式地图用不同颜色标识地点的宠物友好程度，支持按公园、餐厅、商场等类别筛选，提供用户评价和相关信息。</p>
+      </div>
+      <div class="proj-feature">
+        <h4>🦴 虚拟骨头收集 · 奖励兑换</h4>
+        <p>核心激励机制：主人出行时在地图上收集虚拟骨头，累积后可兑换优惠券、狗粮、玩具等实物奖励，鼓励主人多带狗狗外出探索新地点。</p>
+      </div>
+      <div class="proj-feature">
+        <h4>🎉 本地活动 · 社群互动</h4>
+        <p>参与本地商家发布的宠物主题活动，与其他狗主人互动交流，促进宠物友好社群的形成与连接。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prototype -->
+  <section class="proj-prototype">
+    <h2 class="proj-section-title">可交互原型</h2>
+    <div class="proj-prototype-frame">
+      <iframe style="border:none;border-radius:16px;" width="100%" height="100%" src="https://www.figma.com/embed?embed_host=share&footer=false&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fk4IQCw23x4eUocbjBRQtFX%2FDOGO%3Fnode-id%3D5-629%26p%3Df%26viewport%3D700%2C465%2C0.07%26t%3D4mmygUmF2fnUKD47-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D5%3A629%26page-id%3D0%3A1" allowfullscreen></iframe>
+    </div>
+    <p style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);margin-top:12px;">Figma 高保真原型 · 点击体验完整用户流程</p>
+  </section>
+
+  <div class="proj-back"><a href="apps.html">← 返回应用设计</a></div>
+  <footer class="proj-footer">© 2026 Huijing Gong</footer>
+</body>
+</html>

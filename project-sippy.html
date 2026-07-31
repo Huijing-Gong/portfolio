@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIPPY — 智能桌面杯托机器人 | Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/project-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="proj-page">
+  <nav class="proj-nav"><a href="index.html" class="proj-nav-brand">HG</a><div><a href="product.html">← 返回产品设计</a></div></nav>
+
+  <header class="proj-hero">
+    <p class="proj-hero-tag">PRODUCT DESIGN · INFO90003</p>
+    <h1 class="proj-hero-title">SIPPY</h1>
+    <p class="proj-hero-sub">智能桌面杯托机器人 — 用"有意设计的干扰"鼓励健康习惯</p>
+    <p class="proj-hero-desc">一款鼓励健康工作习惯的交互式智能杯托，通过实体机器人形态而非屏幕弹窗来提醒用户适时休息和补水。整合重量感应、手势识别和自主移动能力——当用户将水杯放在机器人上后，机器人会在预设时间后主动靠近用户，配合渐进式动画提醒，迫使用户起身拿起杯子喝水。</p>
+    <div class="proj-hero-tags"><span class="proj-tag">硬件原型</span><span class="proj-tag">ESP32</span><span class="proj-tag">MediaPipe 手势识别</span><span class="proj-tag">Unity 动画</span><span class="proj-tag">BLE 通信</span></div>
+  </header>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">设计亮点</h2>
+    <div class="proj-features">
+      <div class="proj-feature"><h4>🤖 实体互动 > 屏幕提醒</h4><p>用户评测中 65% 的参与者认为 SIPPY 的物理移动比纯屏幕提醒更不容易被忽略，90% 给出 4-5 分（满分5分）的高辨识度评价。</p></div>
+      <div class="proj-feature"><h4>📈 渐进式干扰设计</h4><p>从小角落动画到全屏遮挡，层层递进地打破用户的持续工作模式——既不过于突兀，又确保最终被注意到。</p></div>
+      <div class="proj-feature"><h4>✋ 手势控制</h4><p>用户可用手势赶走机器人以专注于手头工作，但机器人会在预设时间后自动返回——在自主性和坚持提醒之间取得平衡。</p></div>
+      <div class="proj-feature"><h4>🔧 技术栈整合</h4><p>ESP32 主控 + 称重传感器（10kg load cell）+ MediaPipe 手势识别 + Unity 动画 + BLE 蓝牙通信，软硬件一体化原型。</p></div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">元件组成</h2>
+    <div class="proj-mockup-inner" style="background:transparent;min-height:0;border:none;">
+      <img src="images/sippy/components.png" alt="元件组成" style="width:100%;max-width:100%;display:block;border-radius:10px;" loading="lazy">
+    </div>
+    <div class="proj-section-body" style="margin-top:16px;">
+      <p>SIPPY 以 Adafruit Feather ESP32 V2 为主控，通过 load cell 重量传感器 + HX711 放大器实时检测杯子的重量变化与喝水情况。N20 DC 减速电机搭配双电机驱动模块和万向滚球，实现桌面自主移动与平衡。3D 打印外壳包裹激光切割亚克力底盘，内置 3.7V LiPo 电池与 18650 电池供整套系统便携运行。</p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">桌宠动画系统</h2>
+    <div class="proj-section-body">
+      <p>SIPPY 配备了丰富的桌面宠物动画系统，这些动画增强了机器人的拟人化特征，使用户更容易对机器人产生情感连接，从而提高提醒的接受度。</p>
+    </div>
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(167,139,250,.04),transparent 70%);margin-top:20px;">
+      <div class="proj-screenshots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <figure class="proj-screenshot" style="max-width:100%;"><img src="images/sippy/gifs/喝水.gif" alt="喝水动画" loading="lazy" style="width:100%;height:140px;object-fit:contain;background:#0a0a0d;"><figcaption>喝水动画</figcaption></figure>
+        <figure class="proj-screenshot" style="max-width:100%;"><img src="images/sippy/gifs/推动.gif" alt="推动杯子" loading="lazy" style="width:100%;height:140px;object-fit:contain;background:#0a0a0d;"><figcaption>推动杯子</figcaption></figure>
+        <figure class="proj-screenshot" style="max-width:100%;"><img src="images/sippy/gifs/杯子从空到溢出.gif" alt="杯子溢出" loading="lazy" style="width:100%;height:140px;object-fit:contain;background:#0a0a0d;"><figcaption>杯子从空到溢出</figcaption></figure>
+        <figure class="proj-screenshot" style="max-width:100%;"><img src="images/sippy/gifs/爆炸动画.gif" alt="爆炸动画" loading="lazy" style="width:100%;height:140px;object-fit:contain;background:#0a0a0d;"><figcaption>爆炸动画</figcaption></figure>
+        <figure class="proj-screenshot" style="max-width:100%;"><img src="images/sippy/gifs/反过来.gif" alt="反转动画" loading="lazy" style="width:100%;height:140px;object-fit:contain;background:#0a0a0d;"><figcaption>反转动画</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">海报设计</h2>
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(167,139,250,.04),transparent 70%);min-height:0;border:none;">
+      <img src="images/sippy/poster-preview.png" alt="SIPPY 海报" loading="lazy" style="max-width:600px;width:100%;display:block;border-radius:10px;margin:0 auto;">
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">项目视频</h2>
+    <div class="proj-prototype-frame" style="height:500px;">
+      <iframe style="border:none;border-radius:16px;" width="100%" height="100%" src="https://www.youtube.com/embed/CZCz15ocryM" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="proj-back"><a href="product.html">← 返回产品设计</a></div>
+  <footer class="proj-footer">© 2026 Huijing Gong</footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+/* ============================================
+   ART PAGE V2 — 3D Palette
+   ============================================ */
+
+.art-page { background: #050508; overflow-x: hidden; }
+#bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+.art-header-v2 {
+  position: relative; z-index: 1;
+  padding: 120px 36px 10px;
+  text-align: center;
+}
+.art-title-v2 {
+  font-family: var(--font-sc);
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 600; letter-spacing: 0.04em;
+}
+.art-desc-v2 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--text-dim);
+  letter-spacing: 0.06em; margin-top: 8px;
+}
+
+/* --- 3D Palette Stage --- */
+.palette-3d-section {
+  position: relative; z-index: 1;
+  padding: 20px 36px 30px;
+  display: flex; justify-content: center;
+}
+.palette-3d-stage {
+  width: 100%; max-width: 800px;
+  height: 420px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  background: radial-gradient(ellipse at center, rgba(167,139,250,0.03), transparent 70%);
+}
+.palette-3d-stage:active { cursor: grabbing; }
+.palette-3d-stage canvas { display: block; width: 100%; height: 100%; }
+
+.palette-3d-hint {
+  position: absolute; bottom: 18px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--text-dim);
+  pointer-events: none;
+}
+
+/* --- Project Info Panel --- */
+.art-project-panel {
+  position: relative; z-index: 1;
+  padding: 20px 36px 80px;
+  max-width: 720px; margin: 0 auto;
+  min-height: 180px;
+}
+.art-project-placeholder {
+  text-align: center; color: var(--text-dim);
+  font-family: var(--font-sc);
+  font-size: 0.88rem; line-height: 1.8;
+  padding: 40px 0;
+}
+.art-project-content {
+  display: none;
+  grid-template-columns: 200px 1fr;
+  gap: 36px; align-items: start;
+  animation: infoIn 0.4s var(--ease);
+}
+.art-project-content.visible {
+  display: grid;
+}
+@keyframes infoIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.art-project-preview {
+  width: 200px; height: 200px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background-size: cover; background-position: center;
+}
+.art-project-name {
+  font-family: var(--font-sc);
+  font-size: 1.5rem; font-weight: 600;
+  letter-spacing: 0.02em; margin-bottom: 4px;
+}
+.art-project-type {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; color: var(--accent);
+  letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.art-project-summary {
+  font-family: var(--font-sc);
+  font-size: 0.88rem; line-height: 1.7;
+  color: var(--text-muted); font-weight: 300;
+  margin-bottom: 14px;
+}
+.art-project-tags {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.art-project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(167,139,250,.06);
+  color: var(--accent); letter-spacing: 0.04em;
+  border: 1px solid rgba(167,139,250,.1);
+}
+.art-project-cta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--accent); transition: color 0.3s;
+}
+.art-project-cta:hover { color: #c4b5fd; }
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .palette-3d-stage { height: 320px; }
+  .art-project-content.visible {
+    grid-template-columns: 1fr;
+  }
+  .art-project-preview { width: 140px; height: 140px; }
+}

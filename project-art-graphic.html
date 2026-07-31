@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>平面设计合集 | Huijing Gong</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/project-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .flipbook-wrapper {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    }
+    .flipbook-scene {
+      width: 100%; aspect-ratio: 1.45; max-height: 74vh;
+      perspective: 1200px; perspective-origin: 50% 38%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .flipbook-3d {
+      position: relative; width: 94%; height: 92%;
+      transform: rotateX(14deg);
+    }
+    .flipbook-table-shadow {
+      position: absolute; bottom: -28px; left: -2%; right: -2%; height: 40px;
+      background: radial-gradient(ellipse at center,
+        rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+      border-radius: 50%; pointer-events: none; z-index: -1;
+    }
+    .flipbook-cover-edges {
+      position: absolute; inset: -5px -6px -6px -6px; z-index: 0; pointer-events: none;
+      background: linear-gradient(175deg, #f0ece6 0%, #e2ddd4 20%, #e8e3da 50%, #ddd8ce 80%, #e5e0d7 100%);
+      border-radius: 4px 9px 9px 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.12);
+    }
+    .flipbook-page-top,
+    .flipbook-page-bottom,
+    .flipbook-page-right-edge {
+      position: absolute; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(to bottom,
+        #faf7f2 0px, #f0ece4 1px, #faf7f2 1px, #f0ece4 2px);
+    }
+    .flipbook-page-top {
+      top: -4px; left: 0; right: 0; height: 6px;
+      border-radius: 3px 3px 0 0; box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
+    .flipbook-page-bottom {
+      bottom: -5px; left: 0; right: 0; height: 6px; border-radius: 0 0 3px 3px;
+    }
+    .flipbook-page-right-edge {
+      right: -4px; top: 2px; bottom: 2px; width: 7px;
+      border-radius: 0 5px 5px 0; box-shadow: 2px 0 2px rgba(0,0,0,0.04);
+    }
+
+    .flipbook-body {
+      position: relative; width: 100%; height: 100%;
+      display: flex;
+      border-radius: 2px 6px 6px 2px; overflow: hidden;
+      background: #faf7f2; z-index: 2;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+    /* Left & Right halves — one image split into two pages */
+    .flipbook-left,
+    .flipbook-right {
+      flex: 1; position: relative; overflow: hidden;
+      background: #faf7f2;
+    }
+    .flipbook-left img,
+    .flipbook-right img {
+      position: absolute; top: 0;
+      width: 200%; height: 100%;
+      object-fit: contain;
+      display: block; background: #faf7f2;
+    }
+    .flipbook-left img  { left: 0; object-position: left center; }
+    .flipbook-right img { right: 0; object-position: right center; }
+
+    /* Spine */
+    .flipbook-spine {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+      transform: translateX(-0.5px); z-index: 4; pointer-events: none;
+      background: linear-gradient(to right,
+        transparent, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.12) 60%, transparent);
+    }
+    .flipbook-left-shadow {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 30px;
+      z-index: 3; pointer-events: none;
+      background: linear-gradient(to right, rgba(0,0,0,0.06) 0%, transparent 100%);
+    }
+    .flipbook-right-shadow {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 20px;
+      z-index: 3; pointer-events: none;
+      background: linear-gradient(to left, rgba(0,0,0,0.04) 0%, transparent 100%);
+    }
+
+    /* ---- 3D Page Flip Layer ---- */
+    .flipbook-flip {
+      position: absolute; top: 0; left: 50%; width: 50%; height: 100%;
+      transform-style: preserve-3d;
+      transform-origin: left center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .flipbook-flip-face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; overflow: hidden;
+      background: #faf7f2;
+    }
+    .flipbook-flip-front { transform: rotateY(0deg); }
+    .flipbook-flip-back  { transform: rotateY(180deg); }
+
+    .flipbook-flip-face img {
+      position: absolute; top: 0;
+      width: 200%; height: 100%;
+      object-fit: contain; display: block;
+      background: #faf7f2;
+    }
+    .flipbook-flip-front img { right: 0; object-position: right center; }
+    .flipbook-flip-back  img { left: 0;  object-position: left center; }
+
+    /* Navigation */
+    .flipbook-nav { display: flex; align-items: center; gap: 22px; }
+    .flipbook-arrow {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03); color: #999;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .flipbook-arrow:hover {
+      background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.22);
+      color: #eee; transform: scale(1.06);
+    }
+    .flipbook-arrow:active { transform: scale(0.94); }
+    .flipbook-arrow:disabled { opacity: 0.15; cursor: default; pointer-events: none; }
+    .flipbook-counter {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim);
+      letter-spacing: 0.08em; min-width: 56px; text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .flipbook-scene { aspect-ratio: 1.2; max-height: 48vh; }
+      .flipbook-arrow { width: 38px; height: 38px; }
+      .flipbook-cover-edges { inset: -3px -4px -4px -4px; }
+      .flipbook-page-top, .flipbook-page-bottom { height: 4px; }
+      .flipbook-page-right-edge { width: 5px; right: -3px; }
+    }
+  </style>
+</head>
+<body class="proj-page">
+  <nav class="proj-nav"><a href="index.html" class="proj-nav-brand">HG</a><div><a href="art.html">← 返回艺术设计</a></div></nav>
+
+  <header class="proj-hero">
+    <p class="proj-hero-tag">GRAPHIC DESIGN</p>
+    <h1 class="proj-hero-title">平面设计合集</h1>
+    <p class="proj-hero-sub">字体设计 · 实体书装帧 · 黑胶专辑设计</p>
+    <p class="proj-hero-desc">涵盖字母形态设计、手工实体书制作、黑胶唱片封面设计等多媒介平面作品。从微观的字体形态探索到宏观的装帧与音乐视觉叙事，每件作品都是对形式、材质与信息传达的实验性探索。</p>
+    <div class="proj-hero-tags"><span class="proj-tag">字体设计</span><span class="proj-tag">书籍装帧</span><span class="proj-tag">专辑设计</span><span class="proj-tag">材质实验</span></div>
+  </header>
+
+  <!-- 字母设计 -->
+  <section class="proj-section">
+    <h2 class="proj-section-title">字母设计</h2>
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(168,85,247,.04),transparent 70%);">
+      <div class="proj-screenshots">
+        <figure class="proj-screenshot"><img src="images/art/graphic/letter1.png" alt="字母海报" loading="lazy"><figcaption>字体海报设计</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/letter2.jpg" alt="字母海报" loading="lazy"><figcaption>字体海报设计</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/letter3.jpg" alt="字母海报" loading="lazy"><figcaption>字体海报设计</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/letter4.jpg" alt="字母海报" loading="lazy"><figcaption>字体海报设计</figcaption></figure>
+      </div>
+    </div>
+    <div class="proj-section-body" style="margin-top:20px;"><p>以自设计的字体为基础，将字母形态应用到一系列海报设计中，探索字体在版面中的表现力与视觉张力。</p></div>
+  </section>
+
+  <!-- 实体书设计 — Book Viewer -->
+  <section class="proj-section">
+    <h2 class="proj-section-title">实体书设计 — Mark Making</h2>
+
+    <div class="flipbook-wrapper">
+      <div class="flipbook-scene">
+        <div class="flipbook-3d">
+          <div class="flipbook-table-shadow"></div>
+          <div class="flipbook-cover-edges"></div>
+          <div class="flipbook-page-top"></div>
+          <div class="flipbook-page-bottom"></div>
+          <div class="flipbook-page-right-edge"></div>
+          <div class="flipbook-body">
+            <div class="flipbook-left">
+              <img src="" alt="" id="leftPageImg">
+            </div>
+            <div class="flipbook-right">
+              <img src="" alt="" id="rightPageImg">
+            </div>
+            <!-- 3D page flip layer -->
+            <div class="flipbook-flip" id="flipLayer">
+              <div class="flipbook-flip-face flipbook-flip-front">
+                <img src="" alt="" id="flipFrontImg">
+              </div>
+              <div class="flipbook-flip-face flipbook-flip-back">
+                <img src="" alt="" id="flipBackImg">
+              </div>
+            </div>
+            <div class="flipbook-spine"></div>
+            <div class="flipbook-left-shadow"></div>
+            <div class="flipbook-right-shadow"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flipbook-nav">
+        <button class="flipbook-arrow" id="prevBtn" aria-label="上一页">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="flipbook-counter" id="pageCounter">1 / 15</span>
+        <button class="flipbook-arrow" id="nextBtn" aria-label="下一页">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="proj-section-body" style="margin-top:12px;"><p>一本关于人体的书，每一页都由身体的不同部位构成——通过 Photoshop 处理、拼贴与肌理实验，将人体结构转化为独特的视觉语言。从纸张选择到装订方式均由手工完成。<br><small style="color:var(--text-dim)">点击箭头翻页 · 键盘左右键</small></p></div>
+
+    <!-- Spine cover design -->
+    <div style="max-width:860px;margin:30px auto 0;">
+      <h3 style="font-family:var(--font-sc);font-size:1rem;font-weight:500;color:var(--text-muted);margin-bottom:14px;letter-spacing:0.03em;">脊骨封面设计</h3>
+      <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);">
+        <img src="images/art/graphic/spine-cover.png" alt="脊骨封面设计" style="width:100%;display:block;" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- 黑胶专辑设计 -->
+  <section class="proj-section">
+    <h2 class="proj-section-title">黑胶专辑设计</h2>
+    <div class="proj-mockup-inner" style="background:radial-gradient(ellipse at center,rgba(34,197,94,.04),transparent 70%);">
+      <div class="proj-screenshots">
+        <figure class="proj-screenshot"><img src="images/art/graphic/album1.jpg" alt="专辑封套" loading="lazy"><figcaption>专辑封套</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/album2.png" alt="CD 盘面" loading="lazy"><figcaption>CD 盘面设计</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/album3.jpg" alt="海报" loading="lazy"><figcaption>宣传海报</figcaption></figure>
+        <figure class="proj-screenshot"><img src="images/art/graphic/album4.jpg" alt="专辑实物" loading="lazy"><figcaption>实体展示</figcaption></figure>
+      </div>
+    </div>
+    <div class="proj-section-body" style="margin-top:20px;"><p>为中国音乐人窦唯的专辑《梦》(Dream, 2001) 设计的完整唱片包装——包含封面、封底、CD 盘面、两张海报与品牌标识。专辑融合中国传统乐器与电子音效，描绘了内心世界从自我封闭到自我救赎的转变过程。设计从音乐中的诡异与黑暗氛围出发，探索听觉与视觉的通感表达。</p></div>
+  </section>
+
+  <div class="proj-back"><a href="art.html">← 返回艺术设计</a></div>
+  <footer class="proj-footer">© 2026 Huijing Gong</footer>
+
+  <script>
+  (function() {
+    var base = 'images/art/graphic/book-pages/';
+    var pages = [
+      'page_01.png','page_03.png','page_04.png','page_05.png',
+      'page_06.png','page_07.png','page_08.png','page_09.png','page_10.png',
+      'page_11.png','page_12.png','page_13.png','page_14.png','page_15.png'
+    ];
+    var total = pages.length;
+    var idx = 0;
+    var busy = false;
+
+    var leftImg   = document.getElementById('leftPageImg');
+    var rightImg  = document.getElementById('rightPageImg');
+    var flipLayer = document.getElementById('flipLayer');
+    var flipFront = document.getElementById('flipFrontImg');
+    var flipBack  = document.getElementById('flipBackImg');
+    var counter   = document.getElementById('pageCounter');
+    var prevBtn   = document.getElementById('prevBtn');
+    var nextBtn   = document.getElementById('nextBtn');
+
+    function url(i) { return base + pages[i]; }
+
+    function setPages(i) {
+      var src = url(i);
+      leftImg.src = src;
+      rightImg.src = src;
+    }
+
+    function render() {
+      setPages(idx);
+      flipFront.src = url(idx);
+      flipBack.src = (idx + 1 < total) ? url(idx + 1) : '';
+      flipLayer.style.transition = 'none';
+      flipLayer.style.transform = 'rotateY(0deg)';
+      busy = false;
+      counter.textContent = (idx + 1) + ' / ' + total;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === total - 1;
+    }
+
+    function flipTo(dir) {
+      if (busy) return;
+      var target = idx + dir;
+      if (target < 0 || target >= total) return;
+      busy = true;
+
+      if (dir === 1) {
+        // Forward: right half of current folds left, next page appears
+        flipFront.src = url(idx);    // right half of current (visible front at 0deg)
+        flipBack.src = url(target);  // left half of next (visible back at -180deg)
+        // Underlying stays at current until midpoint
+        flipLayer.style.transition = 'transform 0.5s ease-out';
+        flipLayer.style.transform = 'rotateY(-180deg)';
+        setTimeout(function(){ setPages(target); }, 250);
+      } else {
+        // Backward: previous page unfurls from left to right
+        setPages(target);
+        flipFront.src = url(target);  // right half of previous (visible front at 0deg)
+        flipBack.src = url(target);   // left half of previous (visible back at -180deg)
+        flipLayer.style.transition = 'none';
+        flipLayer.style.transform = 'rotateY(-180deg)';
+        flipLayer.offsetHeight;
+        flipLayer.style.transition = 'transform 0.5s ease-out';
+        flipLayer.style.transform = 'rotateY(0deg)';
+      }
+
+      setTimeout(function() {
+        idx = target;
+        flipFront.src = url(idx);
+        flipBack.src = (idx + 1 < total) ? url(idx + 1) : '';
+        flipLayer.style.transition = 'none';
+        flipLayer.style.transform = 'rotateY(0deg)';
+        counter.textContent = (idx + 1) + ' / ' + total;
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === total - 1;
+        busy = false;
+      }, 520);
+    }
+
+    prevBtn.addEventListener('click', function(){ flipTo(-1); });
+    nextBtn.addEventListener('click', function(){ flipTo(1); });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); flipTo(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); flipTo(1); }
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
