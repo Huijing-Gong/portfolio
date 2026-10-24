@@ -57,8 +57,8 @@ html,body{background:#0b2420}
 #domain-dive .dd-idle-art .dd-start:focus-visible{outline:2px solid #fffbd0;outline-offset:-3px}
 #domain-dive .dd-stage:not(.dd-travel) .dd-foot{display:none}
 #domain-dive .dd-travel .dd-idle-art{opacity:0;pointer-events:none}
-.dd-floating-frame{animation:domainFloat var(--duration) ease-in-out var(--delay) infinite;transform-origin:650px 260px}
-@keyframes domainFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-4px)}}
+.dd-floating-frame{animation:domainFloat var(--duration) ease-in-out var(--delay) infinite;transform-origin:650px 260px;transform-box:view-box}
+@keyframes domainFloat{0%,100%{transform:translate(0,0) rotate(0deg) scale(1)}25%{transform:translate(-15px,12px) rotate(-7deg) scale(.97)}50%{transform:translate(20px,-18px) rotate(9deg) scale(1.04)}75%{transform:translate(10px,14px) rotate(-4deg) scale(1.01)}}
 .entry-back{opacity:0;animation:entryControls .3s ease .95s forwards}
 @keyframes entryControls{to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.dd-floating-frame{animation:none}#domain-dive .dd-idle-art{transition:none}.entry-back{animation:none;opacity:1}}
