@@ -3,7 +3,7 @@ const projects=[
 {name:'SIPPY',category:'product',url:'project-sippy.html',description:'智能桌面杯托机器人',cover:'assets/selected-1.webp',kind:'sippy'},
 {name:'Cook Up',category:'app',url:'project-cookup.html',description:'邻里共同烹饪与实时协作',cover:'assets/cookup/neighbours.png',kind:'cookup'},
 {name:'空间世界设计',category:'art',url:'project-art-spatial.html',description:'空间构建与彩色视觉创作',cover:'assets/selected-2.webp',kind:'spatial'},
-{name:'平面设计合集',category:'art',url:'project-art-graphic.html',description:'字体、书籍与黑胶专辑',cover:'assets/album-transparent.webp',kind:'album'},
+{name:'窦唯《梦》· 唱片包装',category:'art',url:'project-album.html',description:'音乐视觉与黑胶专辑包装',cover:'assets/album-transparent.webp',kind:'album'},
 {name:'Meow Smart',category:'app',url:'project-meow.html',description:'猫咪健康与智能家居',cover:'assets/work-1.webp',kind:'phone'},
 {name:'SEVEN DAYS',category:'product',url:'project-sevendays.html',description:'末日生存策略桌游',cover:'assets/sevendays-index.webp'},
 {name:'ReSwap',category:'product',url:'project-reswap.html',description:'校园交换服务与 AI 助手',cover:'assets/reswap-index.webp'},

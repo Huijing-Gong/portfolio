@@ -1,8 +1,8 @@
 (()=>{
  const pages=[
   ['assets/transparent/mario-book-cutout-v2.png','Spatial World Design','从二维线索出发，构建交错生长的空间世界。','project-art-spatial.html'],
-  ['assets/gallery/067-letter1.webp','字体实验','从几何字形，到字体海报与视觉应用。','project-art-graphic.html#type'],
-  ['assets/gallery/077-cover.webp','Mark Making','一本从皮肤、细胞走向骨骼的手工书。','project-art-graphic.html#book']
+  ['assets/gallery/067-letter1.webp','字体实验','从几何字形，到字体海报与视觉应用。','project-typography.html'],
+  ['assets/gallery/077-cover.webp','Mark Making','一本从皮肤、细胞走向骨骼的手工书。','project-mark-making.html']
  ];
  const dialog=document.querySelector('#sketchbook-dialog'),stage=dialog.querySelector('.sketch-stage'),left=dialog.querySelector('.sketch-left'),right=dialog.querySelector('.sketch-right'),leaf=dialog.querySelector('.sketch-leaf'),front=dialog.querySelector('.sketch-front'),back=dialog.querySelector('.sketch-back'),zoom=document.querySelector('#sketch-zoom');
  const mobile=matchMedia('(max-width:650px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');

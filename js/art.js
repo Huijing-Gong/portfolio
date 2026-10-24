@@ -296,7 +296,7 @@ const artProjectData = {
     name: '平面设计合集',
     summary: '涵盖字体设计、实体书设计、黑胶专辑封面设计等多媒介平面作品。从字母的形态探索到完整的装帧设计，每件作品都是对形式、材质与信息传达的实验。',
     tags: ['字体设计','书籍装帧','专辑设计','品牌'],
-    href: 'project-art-graphic.html',
+    href: 'project-album.html',
   },
   render: {
     name: 'Zirma — 3D建模渲染',
