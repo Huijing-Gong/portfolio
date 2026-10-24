@@ -344,12 +344,51 @@ function book(){
  const single=i=>i===0||i===1||i===17||i===pages.length-1;
  function paint(el,i,side){const key=i+':'+side;if(el.dataset.page===key)return;el.dataset.page=key;el.replaceChildren();el.classList.remove('blank','cover');if((single(i)&&side==='left'&&i!==pages.length-1)||(i===pages.length-1&&side==='right')){el.classList.add('blank');return}const img=document.createElement('img');img.src=pages[i].src;img.alt='Mark Making · '+(i===0?'封面':i===pages.length-1?'封底':'第 '+i+' 组书页');img.draggable=false;if(single(i)){el.classList.add('cover');img.style.cssText='width:100%;height:100%;object-fit:contain'}else img.style.cssText=`width:200%;max-width:none;height:100%;object-fit:fill;transform:translateX(${side==='left'?'0':'-50%'})`;el.append(img)}
  function draw(){paint(left,n,'left');paint(right,n,'right');spread.classList.toggle('is-cover',n===0);spread.classList.toggle('is-back',n===pages.length-1);$('#book-page').textContent=n===0?'封面':n===pages.length-1?'封底':`${n} / ${pages.length-2}`;$('#book-prev').disabled=n===0;$('#book-next').disabled=n===pages.length-1;$('.folio-edge-left').disabled=n===0;$('.folio-edge-right').disabled=n===pages.length-1;$('#book-next').textContent=n===0?'打开封面 →':'下一页 →';[n-1,n+1].filter(i=>i>=0&&i<pages.length).forEach(i=>{const img=new Image();img.src=pages[i].src;img.decode().catch(()=>{})})}
- function prepare(dir){if(busy||n+dir<0||n+dir>=pages.length)return false;busy=true;leaf.hidden=false;leaf.style.transition='none';leaf.classList.toggle('backwards',dir<0);if(dir>0){paint(front,n,'right');paint(back,n+1,'left');paint(right,n+1,'right')}else{paint(front,n,'left');paint(back,n-1,'right');paint(left,n-1,'left')}leaf.style.transform='rotateY(0deg)';return true}
- function progress(dir,value){leaf.style.transform=`rotateY(${-dir*180*value}deg)`;leaf.style.setProperty('--shade',Math.sin(Math.PI*value)*.28)}
- // Keep the leaf in place until its underlying destination has decoded and painted.
- async function finish(dir,commit){if(disposed)return;const target=commit?n+dir:n;paint(left,target,'left');paint(right,target,'right');await Promise.all([...left.querySelectorAll('img'),...right.querySelectorAll('img')].map(img=>img.decode().catch(()=>{})));await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(disposed)return;n=target;draw();leaf.hidden=true;busy=false;drag=null}
- function settle(dir,commit=true){const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;let ended=false;const done=()=>{if(ended)return;ended=true;clearTimeout(timer);leaf.removeEventListener('transitionend',onEnd);finish(dir,commit)};const onEnd=e=>{if(e.target===leaf&&e.propertyName==='transform')done()};leaf.addEventListener('transitionend',onEnd);leaf.style.transition=reduced?'none':'transform 720ms cubic-bezier(.2,.65,.25,1)';progress(dir,commit?1:0);timer=setTimeout(done,reduced?0:800)}
- function turn(dir){if(!prepare(dir))return;requestAnimationFrame(()=>requestAnimationFrame(()=>{if(!disposed)settle(dir)}))}
+ // Decode each destination before exposing it. Keep the current sheet on top
+ // until the new underneath page has painted, in both turn directions.
+ const decoded=new Map();
+ function ready(i){if(!decoded.has(i)){const img=new Image();img.src=pages[i].src;decoded.set(i,img.decode().catch(()=>{}))}return decoded.get(i)}
+ const frame=()=>new Promise(resolve=>requestAnimationFrame(resolve));
+ let preparation=Promise.resolve(),pendingProgress=0,renderReady=false;
+ function copyFace(to,from){to.replaceChildren(...[...from.childNodes].map(node=>node.cloneNode(true)));to.classList.toggle('blank',from.classList.contains('blank'));to.classList.toggle('cover',from.classList.contains('cover'));to.dataset.page=from.dataset.page}
+ function prepare(dir){
+  if(busy||n+dir<0||n+dir>=pages.length)return false;
+  busy=true;pendingProgress=0;renderReady=false;leaf.hidden=true;leaf.style.transition='none';
+  leaf.classList.toggle('backwards',dir<0);leaf.style.transform='rotateY(0deg)';leaf.style.setProperty('--shade',0);
+  copyFace(front,dir>0?right:left);paint(back,n+dir,dir>0?'left':'right');
+  preparation=(async()=>{
+   await ready(n+dir);await Promise.all([...back.querySelectorAll('img')].map(img=>img.decode().catch(()=>{})));
+   if(disposed)return;
+   leaf.hidden=false;await frame();await frame();
+   if(disposed)return;
+   paint(dir>0?right:left,n+dir,dir>0?'right':'left');
+   await Promise.all([...(dir>0?right:left).querySelectorAll('img')].map(img=>img.decode().catch(()=>{})));
+   await frame();if(!disposed){renderReady=true;progress(dir,pendingProgress)}
+  })();
+  return true;
+ }
+ function progress(dir,value){pendingProgress=value;if(!renderReady)return;leaf.style.transform=`rotateY(${-dir*180*value}deg)`;leaf.style.setProperty('--shade',Math.sin(Math.PI*value)*.2)}
+ async function finish(dir,commit){
+  if(disposed)return;
+  const target=commit?n+dir:n;
+  // Reuse the painted face at landing: no image replacement at the seam.
+  if(commit)copyFace(dir>0?left:right,back);
+  else copyFace(dir>0?right:left,front);
+  n=target;draw();
+  leaf.hidden=true;leaf.style.transition='none';busy=false;drag=null;
+ }
+ async function settle(dir,commit=true){
+  await preparation;if(disposed)return;
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let ended=false;
+  const done=()=>{if(ended)return;ended=true;clearTimeout(timer);leaf.removeEventListener('transitionend',onEnd);finish(dir,commit)};
+  const onEnd=e=>{if(e.target===leaf&&e.propertyName==='transform')done()};
+  leaf.addEventListener('transitionend',onEnd);
+  const distance=Math.abs((commit?1:0)-pendingProgress),duration=Math.max(160,560*distance);
+  leaf.style.transition=reduced?'none':`transform ${duration}ms cubic-bezier(.32,.08,.2,1)`;
+  progress(dir,commit?1:0);timer=setTimeout(done,reduced?0:duration+80);
+ }
+ function turn(dir){if(prepare(dir))settle(dir)}
  $('#book-prev').onclick=()=>turn(-1);$('#book-next').onclick=()=>turn(1);$('.folio-edge-left').onclick=()=>turn(-1);$('.folio-edge-right').onclick=()=>turn(1);$('#book-zoom').onclick=()=>enlarge(pages[n].src,n===0?'Mark Making · 封面':'Mark Making · 书页 '+n);
  spread.addEventListener('pointerdown',e=>{if(e.target.closest('button')||e.button!==0||busy)return;const r=spread.getBoundingClientRect();const dir=e.clientX>r.left+r.width/2?1:-1;if(!prepare(dir))return;drag={x:e.clientX,dir,width:r.width/2,value:0};spread.setPointerCapture(e.pointerId)});
  spread.addEventListener('pointermove',e=>{if(!drag)return;drag.value=Math.max(0,Math.min(1,(drag.x-e.clientX)*drag.dir/drag.width));progress(drag.dir,drag.value)});

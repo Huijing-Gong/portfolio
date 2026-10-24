@@ -109,3 +109,6 @@ dialog[open]{animation:projectDialogIn .32s cubic-bezier(.2,.75,.2,1)}
 /* Research evidence sits on the page itself; no matte frame or hover plate. */
 .evidence-image,.evidence-image:hover,.archive-image,.archive-image:hover{background:transparent;border:0;box-shadow:none;padding:0}.evidence-image img{border-radius:0}.evidence-image>span{margin-top:15px}.research-paper-blend{mix-blend-mode:multiply}.process-evidence,.zoom-content{background:transparent}.archive-image{padding:0}.iteration-notes .evidence-image{background:transparent}.research-paper-blend:focus-visible{outline-offset:4px}
 .flow-canvas,.service-stage-image{background:transparent;padding:0;border:0;box-shadow:none}.service-stage-image img,.screen-overview img{background:transparent}.service-stage-image{border-radius:0}
+
+/* Keep stationary pages on their own compositing planes during a turn. */
+.folio-paper{transform:translateZ(0);backface-visibility:hidden;-webkit-backface-visibility:hidden}.folio-leaf[hidden]{display:none}.folio-front{transform:rotateY(0deg)}
