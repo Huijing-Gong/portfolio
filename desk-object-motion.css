@@ -1,0 +1,12 @@
+.desk-independent-objects{position:absolute;inset:0;z-index:0;pointer-events:none}
+.desk-independent-objects svg{position:absolute;overflow:visible;pointer-events:none}
+.object-plant{left:1.1962%;top:37.1945%;width:17.9426%;height:21.7853%}
+.object-shelf-book{left:6.7584%;top:58.4485%;width:5.3828%;height:18.0659%}
+.object-pencil{left:30.3828%;top:87.1413%;width:12.5598%;height:9.3518%}
+.plant-foliage{transform-origin:150px 480px;animation:foliageSway 5.2s ease-in-out infinite}
+@keyframes foliageSway{0%,100%{transform:rotate(-1.2deg)}38%{transform:rotate(2deg)}72%{transform:rotate(-.3deg)}}
+.green-book-slide{transform-origin:170px 710px;animation:greenBookPeek 9s ease-in-out infinite;animation-delay:-1s}
+@keyframes greenBookPeek{0%,24%,72%,100%{transform:translate(0,0) rotate(0)}37%,48%{transform:translate(-3px,-11px) rotate(-2deg)}60%{transform:translate(1px,-2px) rotate(.4deg)}}
+.pencil-roll{transform-origin:612px 864px;animation:pencilRoll 7.5s ease-in-out infinite;animation-delay:-3s}
+@keyframes pencilRoll{0%,20%,75%,100%{transform:translate(0,0) rotate(0)}35%{transform:translate(1px,4px) rotate(1.3deg)}47%{transform:translate(-1px,-2px) rotate(-.8deg)}60%{transform:translate(0,1px) rotate(.3deg)}}
+@media(prefers-reduced-motion:reduce){.desk-independent-objects *{animation:none!important}}

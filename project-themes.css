@@ -1,0 +1,54 @@
+/* Project palettes follow the work; image pixels and prototype colours stay untouched. */
+html[data-theme="album"]{--paper:#11141f;--ink:#f1e9df;--muted:#b9b2b4;--accent:#ed8974;--line:#373843;--surface:#1c202f;--on-accent:#251c24;--hover:#231b26;color-scheme:dark;}
+html[data-theme="book"]{--paper:#f1ede5;--ink:#302e2b;--muted:#68615b;--accent:#8e473e;--line:#d3c9bc;--surface:#e8e1d6;--on-accent:#fff9ee;--hover:#e3d8cd;color-scheme:light;}
+html[data-theme="type"]{--paper:#f4f4f0;--ink:#16191e;--muted:#5b6067;--accent:#354d9e;--line:#d3d6db;--surface:#e6e8ec;--on-accent:#ffffff;--hover:#dfe3f0;color-scheme:light;}
+html[data-theme="dogo"]{--paper:#edf5f2;--ink:#214b4c;--muted:#526e6b;--accent:#226f71;--line:#c5dcd6;--surface:#e0eeea;--on-accent:#ffffff;--hover:#cce5df;color-scheme:light;}
+html[data-theme="cookup"]{--paper:#fbf6ed;--ink:#283e31;--muted:#667264;--accent:#a64e24;--line:#dedbcb;--surface:#eeeade;--on-accent:#fff9ef;--hover:#e6ebde;color-scheme:light;}
+html[data-theme="meow"]{--paper:#f3f0f6;--ink:#42394f;--muted:#74697d;--accent:#75558b;--line:#ded4e4;--surface:#e9e2ee;--on-accent:#fffaff;--hover:#e4d9ed;color-scheme:light;}
+html[data-theme="sippy"]{--paper:#edf3f8;--ink:#354756;--muted:#596e7e;--accent:#536d99;--line:#cbd9e4;--surface:#e0eaf2;--on-accent:#ffffff;--hover:#d8e5f1;color-scheme:light;}
+html[data-theme="reswap"]{--paper:#eef3eb;--ink:#28473d;--muted:#596e61;--accent:#34705a;--line:#c9d9ca;--surface:#e0eadd;--on-accent:#ffffff;--hover:#d6e6d7;color-scheme:light;}
+html[data-theme="sevendays"]{--paper:#1b231e;--ink:#e6e9d9;--muted:#b3bdaa;--accent:#c9ba76;--line:#3b483c;--surface:#263229;--on-accent:#172018;--hover:#344236;color-scheme:dark;}
+html[data-theme="art-game"]{--paper:#191c29;--ink:#eae7f0;--muted:#b6b3c8;--accent:#bca3e3;--line:#3c3e54;--surface:#24283c;--on-accent:#211c2e;--hover:#30304b;color-scheme:dark;}
+html[data-theme="art-render"]{--paper:#242b31;--ink:#ece9e0;--muted:#bdc5c4;--accent:#d8b485;--line:#475258;--surface:#303b43;--on-accent:#292e32;--hover:#39464b;color-scheme:dark;}
+html[data-theme="art-spatial"]{--paper:#eff1e7;--ink:#374536;--muted:#626e5c;--accent:#567348;--line:#d2d8c8;--surface:#e2e7d8;--on-accent:#fffef4;--hover:#dbe4ce;color-scheme:light;}
+
+body{background:var(--paper);color:var(--ink);transition:background-color .35s ease,color .35s ease}
+:where(.project-tag,.process-title>p,.process-steps p,.iteration-comparison p,.prototype-left>p,.prototype-right p,.work-notes>p,.work-notes details p,.spatial-composition aside>p,.album-composition aside>p,.conversation-journey p,.concept-workspace p,.development-intro>p,.development-chapters small,.archive-intro>p,.reswap-intro>p,.service-stage aside>p,.history-summary p){color:var(--muted)}
+.project-tag,.process-title>p,.process-steps p,.iteration-comparison p,.prototype-left>p,.prototype-right p,.work-notes>p,.work-notes details p,.spatial-composition aside>p,.album-composition aside>p{color:var(--muted)}
+.process-title>span,.chapter-copy .chapter-number,.research-metrics strong,.iteration-comparison h4,.next-project strong,.prototype-right>a,.entry-options button,.render-result>span{color:var(--accent)}
+.research-metrics span,.phone-tools,.model-toolbar,.model-progress,.model-source,.render-result>p,.evidence-image>span,.archive-image span,.album-music p,.album-music a,footer,.folio-caption p,.folio-hint,.folio-controls span,.media-note,.history-context,.history-support,.service-scope,.service-stage-image>span,.sd-box-closed>p,.sd-deck-name small,.sd-extras span,.sd-figure span,.sd-open-table header p,.sd-token-pile span,.sd-repack{color:var(--muted)}
+.project-tabs button.active,.evidence-tabs button[aria-pressed=true],.motion-choices button.active,.media-switch button[aria-pressed=true],.flow-choices button[aria-pressed=true],.development-chapters button[aria-pressed=true],.dogo-story-index button[aria-pressed=true],.sd-deck-nav button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.evidence-tabs button,.research-jumps a,.paper-button,.model-toolbar button,.folio-controls button,.flow-choices button,.media-switch button,.development-chapters button,.dogo-story-index button,.dogo-story-controls button,.sd-deck-nav button{border-color:var(--line)}
+.project-tabs button:hover,.project-tabs button:focus-visible{box-shadow:0 0 0 1px var(--accent)}
+.evidence-tabs button:hover:not([aria-pressed=true]),.research-jumps a:hover,.folio-controls button:hover:not(:disabled),.development-chapters button:hover,.media-switch button:hover,.sd-deck-nav button:hover:not([aria-pressed=true]){background:var(--hover)}
+.research-jumps a,.paper-button,.model-toolbar button,.folio-controls #book-zoom,.history-support a,.service-stage-links>a,.development-caption,.live-status{color:var(--accent)}
+.research-jumps a,.folio-controls button,.flow-choices button{background:transparent}
+.paper-button,.paper-button:hover,.model-toolbar button{background:var(--surface);box-shadow:none}
+button:focus-visible,a:focus-visible{outline-color:var(--accent)}
+.components-spread button,.game-open,.dogo-story-layout,.dual-explorer,.model-host,.development-player,.meow-video-player,.service-route button[aria-pressed=true]{background:var(--surface)}
+.dogo-story header p,.dogo-scene-insight,.dogo-story header button,.dogo-story-index button,.service-route button>span,.service-stage-image>span,.dual-explorer small,.dual-film>p{color:var(--muted)}
+.service-route,.history-summary,.dual-path,.dogo-scene-insight,.iteration-comparison>div:last-child{border-color:var(--line)}
+.service-route button:hover,.dogo-story-controls button:hover{background:var(--hover)}
+.service-route button[aria-pressed=true],.dual-path{color:var(--accent)}
+.dual-explorer button{color:var(--ink);border-color:var(--line)}
+.dual-explorer button[aria-pressed=true]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.album-object{filter:drop-shadow(0 24px 28px #0005)}
+html[data-theme=album] .album-object img{max-height:500px}
+html[data-theme=album] .album-spread button{background:var(--surface);border-color:var(--line)}
+html[data-theme=album] .album-spread span{color:var(--muted)}
+html[data-theme=album] .research-paper-blend,html[data-theme=art-game] .research-paper-blend,html[data-theme=art-render] .research-paper-blend,html[data-theme=sevendays] .research-paper-blend{mix-blend-mode:normal}
+#contact-dialog{background:var(--paper);color:var(--ink);border-color:var(--line)}
+#contact-dialog p,#contact-dialog a{color:var(--muted)}
+.sd-library-dialog,.sd-asset-dialog{background:var(--surface);color:var(--ink)}
+.sd-library-hint,.sd-dialog-header span,.sd-asset-dialog>p{color:var(--muted)}
+@media(prefers-reduced-motion:reduce){body{transition:none}}
+#zoom-dialog{background:var(--paper);color:var(--ink);border-color:var(--line)}
+#zoom-dialog>p,.close-dialog{color:var(--muted)}
+.development-intro>p,.development-chapters small,.archive-intro>p,.reswap-intro>p,.service-stage aside>p,.history-summary p,.conversation-journey p,.concept-workspace p,.animation-workspace>div>p{color:var(--muted)}
+.dual-explorer .eyebrow{color:var(--accent)}
+
+/* Fixed contrast for controls over the rendered artwork. */
+.render-controls{background:#fbf3e3f5;color:#26332f;border:1px solid #c8baa0;box-shadow:0 4px 18px #10171933;backdrop-filter:blur(10px)}
+.render-controls button,.render-controls span{color:#26332f!important;opacity:1;font-weight:500}
+.render-controls button:hover{background:#ded8c7;color:#152720!important}
+.render-controls button:focus-visible{outline:2px solid #345f52;outline-offset:2px}

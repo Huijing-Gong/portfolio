@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="900" viewBox="0 0 2200 900">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#d8dde3"/>
+    </pattern>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#69737c"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#15202b" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title{font:700 38px Arial,sans-serif;fill:#1f2933}
+      .stage{font:700 26px Arial,sans-serif;fill:#1f2933}
+      .stageLight{font:700 26px Arial,sans-serif;fill:white}
+      .node{font:600 20px Arial,sans-serif;fill:#27333d;text-anchor:middle}
+      .small{font:500 17px Arial,sans-serif;fill:#52606d;text-anchor:middle}
+      .arrow{fill:none;stroke:#69737c;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <rect width="2200" height="900" fill="#fbfcfd"/>
+  <rect width="2200" height="900" fill="url(#grid)" opacity="0.75"/>
+  <text x="1100" y="58" class="title" text-anchor="middle">Cook Up Iterative Design Process</text>
+
+  <!-- Stage 1 -->
+  <rect x="70" y="105" width="1250" height="250" rx="18" fill="#fff0f9" stroke="#f044b8" stroke-width="3"/>
+  <rect x="310" y="82" width="770" height="62" rx="12" fill="#f23fbb" stroke="#c51c91" stroke-width="3" filter="url(#shadow)"/>
+  <text x="695" y="122" class="stageLight" text-anchor="middle">Stage 1  Idea Generation and Selection</text>
+
+  <g fill="#ffc8ec" stroke="#f044b8" stroke-width="3">
+    <rect x="105" y="190" width="160" height="90" rx="10"/><rect x="300" y="190" width="170" height="90" rx="10"/>
+    <rect x="505" y="190" width="150" height="90" rx="10"/><rect x="690" y="190" width="180" height="90" rx="10"/>
+    <rect x="905" y="190" width="180" height="90" rx="10"/><rect x="1120" y="190" width="160" height="90" rx="10"/>
+  </g>
+  <text x="185" y="243" class="node">Brainstorming</text>
+  <text x="385" y="230" class="node"><tspan x="385">Affinity</tspan><tspan x="385" dy="27">Diagramming</tspan></text>
+  <text x="580" y="243" class="node">Dot Voting</text>
+  <text x="780" y="230" class="node"><tspan x="780">3C Framework</tspan><tspan x="780" dy="27">Analysis</tspan></text>
+  <text x="995" y="230" class="node"><tspan x="995">Concept Selection</tspan><tspan x="995" dy="27">Matrix</tspan></text>
+  <text x="1200" y="230" class="node"><tspan x="1200">Cooking Together</tspan><tspan x="1200" dy="27">Selected</tspan></text>
+  <path d="M265 235 H294" class="arrow"/><path d="M470 235 H499" class="arrow"/><path d="M655 235 H684" class="arrow"/>
+  <path d="M870 235 H899" class="arrow"/><path d="M1085 235 H1114" class="arrow"/>
+
+  <!-- Stage 2 -->
+  <rect x="1370" y="105" width="760" height="250" rx="18" fill="#fff8e7" stroke="#f5b82e" stroke-width="3"/>
+  <rect x="1450" y="82" width="600" height="62" rx="12" fill="#ffc83d" stroke="#e5a700" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1750" y="122" class="stage" text-anchor="middle">Stage 2  Scenario and Workflow Definition</text>
+  <g fill="#ffedbd" stroke="#f5b82e" stroke-width="3">
+    <rect x="1415" y="190" width="180" height="90" rx="10"/><rect x="1640" y="190" width="180" height="90" rx="10"/>
+    <rect x="1865" y="190" width="210" height="90" rx="10"/>
+  </g>
+  <text x="1505" y="243" class="node">Storyboarding</text>
+  <text x="1730" y="243" class="node">User Flow</text>
+  <text x="1970" y="230" class="node"><tspan x="1970">Collaboration and</tspan><tspan x="1970" dy="27">Task Dependencies</tspan></text>
+  <path d="M1595 235 H1634" class="arrow"/><path d="M1820 235 H1859" class="arrow"/>
+  <path d="M1280 235 H1409" class="arrow"/>
+
+  <!-- Stage 3 -->
+  <rect x="70" y="505" width="1170" height="250" rx="18" fill="#edf7ff" stroke="#35a4ed" stroke-width="3"/>
+  <rect x="250" y="482" width="810" height="62" rx="12" fill="#38a7ef" stroke="#1582cc" stroke-width="3" filter="url(#shadow)"/>
+  <text x="655" y="522" class="stageLight" text-anchor="middle">Stage 3  Heuristic Informed Prototype Development</text>
+  <g fill="#cbe8ff" stroke="#35a4ed" stroke-width="3">
+    <rect x="105" y="590" width="215" height="100" rx="10"/><rect x="365" y="590" width="190" height="100" rx="10"/>
+    <rect x="600" y="590" width="215" height="100" rx="10"/><rect x="860" y="590" width="320" height="100" rx="10"/>
+  </g>
+  <text x="212" y="625" class="node"><tspan x="212">Select Community</tspan><tspan x="212" dy="27">Heuristic Cards</tspan></text>
+  <text x="460" y="653" class="node">Initial Sketches</text>
+  <text x="707" y="625" class="node"><tspan x="707">Low fidelity</tspan><tspan x="707" dy="27">Wireframes</tspan></text>
+  <text x="1020" y="625" class="node"><tspan x="1020">Initial Mid fidelity</tspan><tspan x="1020" dy="27">Prototype</tspan></text>
+  <path d="M320 640 H359" class="arrow"/><path d="M555 640 H594" class="arrow"/><path d="M815 640 H854" class="arrow"/>
+
+  <!-- Stage 4 -->
+  <rect x="1300" y="505" width="830" height="250" rx="18" fill="#eafaf8" stroke="#49c8be" stroke-width="3"/>
+  <rect x="1410" y="482" width="610" height="62" rx="12" fill="#52cec4" stroke="#2aa89f" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1715" y="522" class="stage" text-anchor="middle">Stage 4  Community Heuristic Evaluation</text>
+  <g fill="#c9f4ef" stroke="#49c8be" stroke-width="3">
+    <rect x="1345" y="590" width="220" height="100" rx="10"/><rect x="1610" y="590" width="200" height="100" rx="10"/>
+    <rect x="1855" y="590" width="230" height="100" rx="10"/>
+  </g>
+  <text x="1455" y="625" class="node"><tspan x="1455">Review Key Screens</tspan><tspan x="1455" dy="27">and Task Flows</tspan></text>
+  <text x="1710" y="625" class="node"><tspan x="1710">Consolidate</tspan><tspan x="1710" dy="27">Issues</tspan></text>
+  <text x="1970" y="625" class="node"><tspan x="1970">Prioritised Design</tspan><tspan x="1970" dy="27">Recommendations</tspan></text>
+  <path d="M1565 640 H1604" class="arrow"/><path d="M1810 640 H1849" class="arrow"/>
+
+  <!-- Cross-stage connectors -->
+  <path d="M1970 280 V400 Q1970 430 1940 430 H120 Q90 430 90 470 V585 H99" class="arrow"/>
+  <text x="1040" y="420" class="small">Storyboard and user flow inform prototype structure</text>
+  <path d="M1180 640 H1339" class="arrow"/>
+
+  <!-- Current endpoint note -->
+  <rect x="1515" y="790" width="540" height="70" rx="35" fill="#ffffff" stroke="#8b98a5" stroke-width="2" stroke-dasharray="8 7"/>
+  <text x="1785" y="819" class="small"><tspan x="1785">Current output: evaluation findings and recommendations</tspan><tspan x="1785" dy="24">The mid fidelity prototype has not yet been revised</tspan></text>
+</svg>
