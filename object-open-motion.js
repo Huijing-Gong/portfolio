@@ -22,7 +22,7 @@
  await animate(node,[{opacity:1,transform:'translate(0,0)'},{opacity:1,transform:'translate(-12px,0)',offset:.72},{opacity:0,transform:'translate(-35px,5px)'}],{duration:420,fill:'forwards'}).finished.catch(()=>{});
  }
  dialog.addEventListener('toggle',async()=>{const token=++run;if(!dialog.open){clear();closing=false;return}if(reduced.matches)return;clear();if(kind==='stage'){await perform();if(token!==run||closing||!dialog.open)return;clear();animate(dialog,[{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:280});reveal();return}
- dialog.style.transformOrigin=kind==='book'?'left center':kind==='note'?'center top':'50% 50%';animate(dialog,[{transform:pose(),opacity:.15},{transform:'translate(0,0) scale(1) rotate(0)',opacity:1}],{duration:kind==='book'?680:600});
+ dialog.style.transformOrigin='50% 50%';animate(dialog,[{transform:pose(),opacity:.15},{transform:'translate(0,0) scale(1) rotate(0)',opacity:1}],{duration:kind==='book'?680:600});
  if(kind==='book')bookCover();
  if(kind==='paper'){const paper=source.querySelector('.research-sheets');if(paper)animate(paper,[{transform:'translate(0,0)'},{transform:'translate(12px,-36px)',offset:.6},{transform:'translate(0,0)'}],{duration:550})}
  if(kind==='screen'){const screen=source.querySelector('.code-screen');if(screen)animate(screen,[{opacity:.65},{opacity:1}],{duration:180})}
