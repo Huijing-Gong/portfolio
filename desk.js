@@ -11,3 +11,5 @@ if(location.hash==='#computer')document.querySelector('#computer-dialog').showMo
 const turntable=document.querySelector('.desk-turntable'),transfer=document.querySelector('.album-transfer');
 const musicToggle=document.querySelector('#music-toggle'),spotifyPlayer=document.querySelector('#spotify-player');
 document.querySelector('#music-close')?.addEventListener('click',()=>{spotifyPlayer.hidden=true;musicToggle.setAttribute('aria-expanded','false')});
+
+if(location.hash==='#research')document.querySelector('#research-dialog').showModal();
