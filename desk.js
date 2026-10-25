@@ -13,3 +13,5 @@ const musicToggle=document.querySelector('#music-toggle'),spotifyPlayer=document
 document.querySelector('#music-close')?.addEventListener('click',()=>{spotifyPlayer.hidden=true;musicToggle.setAttribute('aria-expanded','false')});
 
 if(location.hash==='#research')document.querySelector('#research-dialog').showModal();
+
+if(location.hash==='#stage')document.querySelector('#stage-dialog').showModal();
