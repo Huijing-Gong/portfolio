@@ -1,0 +1,6 @@
+/* Move the independent alpha book itself; keep the shelf and backing stationary. */
+.object-shelf-book .green-book-slide{animation:none;transform:translate(0,0) rotate(0);transform-origin:170px 710px;transition:transform .7s cubic-bezier(.22,.8,.25,1)}
+.object-shelf-book.is-peeking .green-book-slide{transform:translate(-5px,-16px) rotate(-5deg)}
+.shelf-book-grip{position:absolute;left:7.4%;top:59%;width:3.9%;height:17%;z-index:6;background:none;border:0;padding:0;cursor:pointer;transform:rotate(-9deg);-webkit-tap-highlight-color:transparent}
+.shelf-book-grip:focus-visible{outline:2px dashed #fff0bd;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.object-shelf-book .green-book-slide{transition:none}.object-shelf-book.is-peeking .green-book-slide{transform:translate(0,-5px)}}
