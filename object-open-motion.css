@@ -1,7 +1,7 @@
 .object-dialog-motion{will-change:transform,opacity}
 .opening-book-cover{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:9%;color:#344a3d;background:linear-gradient(90deg,#b6c1a4 0 2%,#e9e2cd 3% 5%,#f3ecda 6% 100%);border:1px solid #a8b398;border-radius:5px;transform-origin:left center;pointer-events:none;backface-visibility:hidden}
 .opening-book-cover span{font:11px monospace;letter-spacing:3px}.opening-book-cover b{font-size:clamp(28px,4vw,54px);font-weight:500}.opening-book-cover small{font-size:14px;color:#79806b}
-.stage-dialog.is-performing{background:transparent!important;border-color:transparent!important;box-shadow:none!important;overflow:visible}
+.stage-dialog.is-performing{will-change:auto;background:transparent!important;border-color:transparent!important;box-shadow:none!important;overflow:visible}
 .stage-dialog.is-performing>:not(.stage-performance):not(.dialog-close){visibility:hidden}
 .stage-performance{position:fixed;z-index:8;pointer-events:none;transform-origin:center center}.stage-performance svg{width:100%;height:100%;overflow:visible}.stage-performance .man-arm,.stage-performance .man-forearm,.stage-performance .man-head,.stage-performance .man-leg,.stage-performance .man-shin{transition:none}
 @media(prefers-reduced-motion:reduce){.object-dialog-motion{will-change:auto}}
