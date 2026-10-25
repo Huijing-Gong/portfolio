@@ -1,5 +1,4 @@
 (()=>{
- const reduced=matchMedia('(prefers-reduced-motion:reduce)');
  const entries=[['computer-dialog','.desk-laptop','screen'],['sketchbook-dialog','.desk-sketchbook','book'],['research-dialog','.research-folder','paper'],['stage-dialog','.stage-mannequin','stage'],['about-dialog','.contact-note','note']];
  const ease='cubic-bezier(.22,.8,.22,1)';
  for(const [id,selector,kind] of entries){const dialog=document.getElementById(id),source=document.querySelector(selector);if(!dialog||!source)continue;dialog.classList.add('object-dialog-motion');dialog.dataset.openMotion=kind;let animations=[],closing=false,run=0,actor=null;
@@ -21,7 +20,7 @@
  animate(node.querySelector('.man-head'),[{transform:'rotate(0deg)'},{transform:'rotate(-8deg)'}],{duration:280,fill:'forwards'});
  await animate(node,[{opacity:1,transform:'translate(0,0)'},{opacity:1,transform:'translate(-12px,0)',offset:.72},{opacity:0,transform:'translate(-35px,5px)'}],{duration:420,fill:'forwards'}).finished.catch(()=>{});
  }
- async function opened(){const token=++run;if(!dialog.open)return;if(reduced.matches)return;clear();if(kind==='stage'){await perform();if(token!==run||closing||!dialog.open)return;clear();animate(dialog,[{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:280});reveal();return}
+ async function opened(){const token=++run;if(!dialog.open)return;clear();if(kind==='stage'){await perform();if(token!==run||closing||!dialog.open)return;clear();animate(dialog,[{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:280});reveal();return}
  dialog.style.transformOrigin='50% 50%';animate(dialog,[{transform:pose(),opacity:.15},{transform:'translate(0,0) scale(1) rotate(0)',opacity:1}],{duration:kind==='book'?680:600});
  if(kind==='book')bookCover();
  if(kind==='paper'){const paper=source.querySelector('.research-sheets');if(paper)animate(paper,[{transform:'translate(0,0)'},{transform:'translate(12px,-36px)',offset:.6},{transform:'translate(0,0)'}],{duration:550})}
@@ -31,7 +30,7 @@
  const show=dialog.showModal.bind(dialog);dialog.showModal=function(){const wasOpen=dialog.open;show();if(!wasOpen)opened()};
  dialog.addEventListener('close',()=>{++run;clear();closing=false});
  if(dialog.open)opened();
- async function close(){if(closing||!dialog.open)return;if(reduced.matches){dialog.close();return}closing=true;++run;clear();if(kind==='stage')await perform(true);else await animate(dialog,[{transform:'translate(0,0) scale(1)',opacity:1},{transform:pose(),opacity:0}],{duration:420,fill:'forwards'}).finished.catch(()=>{});dialog.close();clear();closing=false;source.focus({preventScroll:true})}
+ async function close(){if(closing||!dialog.open)return;closing=true;++run;clear();if(kind==='stage')await perform(true);else await animate(dialog,[{transform:'translate(0,0) scale(1)',opacity:1},{transform:pose(),opacity:0}],{duration:420,fill:'forwards'}).finished.catch(()=>{});dialog.close();clear();closing=false;source.focus({preventScroll:true})}
  dialog.addEventListener('cancel',e=>{e.preventDefault();close()});dialog.addEventListener('click',e=>{if(e.target.closest('.dialog-close')){e.preventDefault();e.stopImmediatePropagation();close();return}if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom){e.stopImmediatePropagation();close()}}},true);
  }
 })();
