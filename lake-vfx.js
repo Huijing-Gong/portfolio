@@ -8,5 +8,5 @@
  process.querySelector('.process-steps').before(section);
  const jumps=process.querySelector('.research-jumps');if(jumps){const a=document.createElement('a');a.href='#lake-vfx';a.textContent='Boss 特效与红月 ↓';jumps.append(a)}
  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.src=e.target.dataset.gif;observer.unobserve(e.target)}}),{rootMargin:'200px'});section.querySelectorAll('[data-gif]').forEach(img=>observer.observe(img));
- section.querySelectorAll('.lake-vfx-open').forEach(button=>button.onclick=()=>{const dialog=document.querySelector('#zoom-dialog');dialog.querySelector('img').src=button.dataset.src;dialog.querySelector('img').alt=button.getAttribute('aria-label');dialog.querySelector('p').textContent=button.getAttribute('aria-label').replace('放大动图：','');dialog.showModal()});
+ section.querySelectorAll('.lake-vfx-open').forEach(button=>button.onclick=()=>{const dialog=document.querySelector('#zoom-dialog');dialog.querySelector('img').src=button.dataset.src;dialog.querySelector('img').alt=button.getAttribute('aria-label');dialog.querySelector('p').textContent=button.getAttribute('aria-label').replace(/^放大(?:动图|图片)：/,'');dialog.showModal()});
 })();
