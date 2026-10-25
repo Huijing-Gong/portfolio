@@ -6,3 +6,5 @@
 
 /* Genuine alpha assets sit on a quiet, readable drawing surface, without a white image rectangle. */
 .lighting .evidence:has(img[src*="stage-scene-cutout"]){background:#c9d0c9;border:0;padding:20px}
+
+.costume .costume-finale .evidence{background:transparent;border:0;padding:0;border-radius:0}
