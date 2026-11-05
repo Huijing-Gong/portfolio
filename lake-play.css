@@ -12,3 +12,6 @@
 .lake-play-bar button:hover{background:var(--hover)}
 .lake-play-bar button[hidden]{display:none}
 @media(max-width:700px){.lake-play-bar{flex-direction:column;align-items:flex-start}}
+.lake-play-cover{background:radial-gradient(ellipse at 50% 55%,#173444 0%,#0b151c 62%,#070d12 100%)}
+.lake-play-cover .lake-play-title{top:30%;font-size:clamp(22px,3.4vw,46px);letter-spacing:.42em;color:#9fe3e8;font-weight:300;text-shadow:0 0 18px #3fb6c455;white-space:nowrap}
+.lake-play-cover span:last-child{top:58%}
