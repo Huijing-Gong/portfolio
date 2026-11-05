@@ -1,0 +1,69 @@
+EXTERNAL GAME AUDIO — 2026-11-01
+
+Fantasy SFX Pack Vol 1 by JC Sounds
+https://opengameart.org/content/jc-sounds-fantasy-sfx-pack-vol-1
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+Changes: selected excerpts; level adjustment; mono conversion; short edge fades; OGG encoding. Potion cues combine these chimes with separate CC0 bottle recordings.
+No endorsement by the original author is implied. Retain this credit with the distributed game.
+
+OTHER ORIGINAL SOURCES (CC0)
+Kenney
+https://opengameart.org/content/interface-sounds
+CC0-1.0 (selected option)
+
+qubodup
+https://opengameart.org/content/liquid-bottle-drink-set
+CC0-1.0
+
+Someoneman
+https://opengameart.org/content/cure-magic
+CC0-1.0
+
+artisticdude
+https://opengameart.org/content/rpg-sound-pack
+CC0-1.0 (selected option)
+
+themightyglider (derived from IDLauncher / magnuswaker)
+https://opengameart.org/content/moving-boulder
+CC0-1.0 (selected option)
+
+qubodup
+https://opengameart.org/content/earth-element-magic-spell
+CC0-1.0
+
+Iwan 'qubodup' Gabovitch
+https://opengameart.org/content/impact
+CC0-1.0 (selected option)
+
+HaelDB
+https://opengameart.org/content/footsteps-leather-cloth-armor
+CC0-1.0 (selected option)
+
+artisticdude
+https://opengameart.org/content/swishes-sound-pack
+CC0-1.0 (selected option)
+
+rubberduck
+https://opengameart.org/content/80-cc0-rpg-sfx
+CC0-1.0
+
+Kenney
+https://opengameart.org/content/50-rpg-sound-effects
+CC0-1.0 (selected option)
+
+thebardofblasphemy
+https://opengameart.org/content/grunts-male-death-and-pain
+CC0-1.0 (selected option)
+
+JaggedStone
+https://opengameart.org/content/magic-spell-sfx
+CC0-1.0
+
+EZduzziteh
+https://opengameart.org/content/horse-trotting
+CC0-1.0 (selected option)
+
+CC0 license: https://creativecommons.org/publicdomain/zero/1.0/
+
+Per-asset sources, original SHA-256 hashes and processing are in ExternalAudio20261101.json.

@@ -1,0 +1,49 @@
+DEMON BOSS AUDIO REVISION — SOURCES
+
+150 Combat Sound Effects, individually credited source packs
+Freesound/OpenGameArt contributors; see included license file
+CC0-1.0
+https://opengameart.org/content/150-combat-sound-effects
+
+80 CC0 creature SFX
+rubberduck
+CC0-1.0
+https://opengameart.org/content/80-cc0-creature-sfx
+
+Dark Cavern Ambient
+Paul Wortmann
+CC0-1.0
+https://opengameart.org/content/dark-cavern-ambient
+
+Various Sound Effects - spear
+Spring Spring
+CC0-1.0
+https://opengameart.org/content/various-sound-effects-0
+
+Sword and air whoosh recordings, horse and anvil field recordings
+Joseph SARDIN; anvil recording by Pablo BERGEL
+CC0-1.0
+https://bigsoundbank.com/
+
+CC0 legal code: https://creativecommons.org/publicdomain/zero/1.0/
+
+Guardian dialogue uses Microsoft Edge en-US-AndrewNeural speech, with mild pitch and clarity processing.
+Per-asset source files, sound design operations and SHA-256 values are listed in Assets/AudioLicenses/DemonBossRevision_SOURCES.json.
+
+Additional sound revision:
+Magic Spell SFX — JaggedStone — CC0 — https://opengameart.org/content/magic-spell-sfx
+3 dark magic spells — qubodup — CC0 — https://opengameart.org/content/3-dark-magic-spells
+Warden voice uses neural speech with light pitch shifting, without a monster voice layer.
+
+Further boss sound revision sources:
+25 CC0 bang / firework SFX - rubberduck - CC0-1.0 - https://opengameart.org/content/25-cc0-bang-firework-sfx
+Fireplace Sound loop - PagDev - CC0-1.0 - https://opengameart.org/content/fireplace-sound-loop
+Medieval sound effects - Weapon Textures - Ben Jaszczak & Brian Nelson - CC0-1.0 - https://opengameart.org/content/medieval-sound-effects-weapon-textures
+Metal Impact Sounds - BMacZero - CC0-1.0 - https://opengameart.org/content/metal-impact-sounds
+Various Sound Effects - Spring Spring - CC0-1.0 - https://opengameart.org/content/various-sound-effects-0
+
+Cinematic revision:
+Fire Staff Sound Effects - LEGIT Audio - CC0-1.0 - https://opengameart.org/content/fire-staff-sound-effects
+Electricity Game Sound Pack - faxcorp - CC0-1.0 - https://opengameart.org/content/electricity-game-sound-pack
+Air whoosh - pyranostudios - CC0-1.0 - https://opengameart.org/content/air-whoosh
+Breaking Rock - themightyglider - CC0-1.0 - https://opengameart.org/content/breaking-rock

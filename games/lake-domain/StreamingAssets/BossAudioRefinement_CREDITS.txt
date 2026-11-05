@@ -1,0 +1,19 @@
+Boss audio refinement, 2026-11-01
+Original pressure/percussion synthesis for Warden skill impacts and preparation.
+Dry recorded whooshes: Joseph SARDIN / BigSoundBank, CC0; https://bigsoundbank.com/
+Flight and charge approach: pyranostudios, CC0; https://opengameart.org/content/air-whoosh
+Spike retract: themightyglider, CC0; https://opengameart.org/content/breaking-rock
+Current speech: locally generated Qwen3-TTS Ryan (guardian) and Aiden (hero), original English lines and state-specific acting. Qwen model Apache-2.0: https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+Mounted dissolve retains faxcorp CC0 powerdown/electricity source.
+All current asset hashes and processing notes: Assets/AudioLicenses/DemonBossRevision_SOURCES.json
+
+Performance revision: Horse neigh #4 by Joseph SARDIN, CC0, https://bigsoundbank.com/horse-neighing-4-s1541.html
+Armor foley by HaelDB, CC0, https://opengameart.org/content/footsteps-leather-cloth-armor
+Black Sun harmonic design, Orb, sword/body percussion and sustained charge beds: original synthesis.
+
+Polish: knife blades from Kenney RPG Audio; body impacts from Kenney Impact Sounds, CC0, supplied 150 Combat SFX license. Previous revision used rubberduck hurt excerpts; current hero uses newly generated natural human reactions. Current voices retain natural pitch with restrained early reflections; no celebrity recording or clone. Full processing recipes retained in source manifest.
+
+Emotion revision: continuous original soft Sentinel charge tones; selected distinct dry physical impacts and air/stone textures, existing CC0 source packs above.
+Depth revision: prior Ryan emotional performances preserved with slower tempo (0.91) and deeper formants/pitch (0.84); original fixed-pitch Black Sun pressure rise, air descent and impact; Aiden short closed-mouth reactions (0.20 seconds). Sentinel charge increased approximately 3.3 dB without changing source timbre.
+Clarity revision: original noise-free Black Sun ascent and soft harmonic Sentinel charge; reduced air/noise in descent and impact. First Ryan line regenerated as a firm declaration. All Ryan lines use a shared deeper formant transform (0.78), pitch 0.88 and tempo 0.91. Original Qwen-generated performances; no cloned actor voice.
+Current guardian voice: original Qwen3-TTS VoiceDesign mature bass character. Natural generated pitch, no pitch/formant shift or time stretch. Phase-two take generated through the official Qwen demo; other final takes generated locally with verified Apache-2.0 model. Restored user-selected SentinelPrep0/1/2 from BossRevisionFire-20261101 original recipes (English Longbow Draw / Katana Sheath Slow).
