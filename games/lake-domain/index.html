@@ -129,7 +129,7 @@
               return reader.read().then((r) => {
                 if (r.done) return new Blob(chunks);
                 chunks.push(r.value); loaded[i] += r.value.length;
-                onProgress(loaded.reduce((a, b) => a + b, 0) / Math.max(total, 307063387));
+                onProgress(loaded.reduce((a, b) => a + b, 0) / Math.max(total, 329171117));
                 return pump();
               });
             }
